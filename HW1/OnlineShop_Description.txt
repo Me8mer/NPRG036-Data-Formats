@@ -1,0 +1,81 @@
+﻿Online Shop
+1. Domain Overview
+This conceptual model represents an online shop where an Owner operates one or more E-Shops. Each e-shop displays Items for sale. Shoppers can create Accounts within an e-shop and use a Cart to collect items they intend to purchase. The model captures data entities, their primitive attributes, and associations with explicit multiplicities.
+
+2. Classes
+Owner
+- Description:
+Person or organization that operates one or more e-shops.
+- Attributes:
+o Name – text, 1..1
+o CompanyID – text, 1..1
+- Relationships:
+o owns (Owner 1..1 <=> E-Shop 0..*)
+The owner owns 0 or more e-shops.
+
+E-Shop
+- Description:
+Online storefront operated by an owner and displaying products.
+- Attributes:
+o Name – text, 1..1
+o URL – URL, 1..1
+o Icon – URL, 1..1
+- Relationships:
+o owns (Owner 1..1 <=> E-Shop 0..*)\
+The e-shop is owned by exactly one owner.
+o displays (E-Shop 0..1 <=> Item 0..*)\
+The e-shop lists 0 or more items for sale.
+o facilitates (E-Shop 1..1 <=> Account 0..*)\
+The e-shop allows creation of multiple accounts or having no account.
+
+Shopper
+- Description:
+Customer who browses e-shops and may register an account.
+- Attributes:
+o FirstName – text, 1..1
+o LastName – text, 1..1
+- Relationships:
+o owns (Shopper 0..1 <=> Account 0..*)\
+A shopper may have zero or more accounts.
+
+Account
+- Description:
+Login credentials and user profile that identify a shopper within an e-shop.
+- Attributes:
+o Login – text, 1..1
+o Password – text, 1..1
+- Relationships:
+o owns (Shopper 0..1 <=> Account 0..*)\
+The account represents at most a single shopper who uses it for access. 
+o facilitates (E-Shop 1..1 <=> Account 0..*)\
+Each account exists within one e-shop.
+o possesses (Account 1..1 <=> Cart 0..*)\
+Each account is linked to 0 or more carts for potential purchase.
+
+Cart
+- Description:
+Container of items selected by the shopper for purchase.
+- Attributes:
+o ItemCount – integer, 1..1
+o TotalPrice – decimal, 1..1
+- Relationships:
+o possesses (Account 1..1 <=> Cart 0..*)\
+The cart belongs to a specific account and cannot exist independently of it.
+o contains (Cart 0..* <=> Item 0..*)\
+The cart can include zero or more items.
+
+Item
+- Description:
+Product offered for sale in a specific e-shop.
+- Attributes:
+o Name – text, 1..1
+o Price – decimal, 1..1
+o Description – text, 1..1
+o Available – boolean, 1..1
+o PromoImages – URL, 0..*
+- Relationships:
+o displays (E-Shop 0..1 <=> Item 0..*)\
+Each item can be displayed in one e-shop.
+o contains (Cart 0..* <=> Item 0..*)\
+The item may appear in zero or several carts simultaneously if chosen by multiple shoppers.
+
