@@ -1,0 +1,4 @@
+Filip Volný     - created team, provides continued support for discord based communication
+Ivan Herasymov  - created the idea for the UML diagram
+Samuel Lipovský - drew the diagram, and wrote the specification
+Peter Vidlička  - write structured description
