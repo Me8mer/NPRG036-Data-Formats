@@ -1,0 +1,69 @@
+@prefix ex: <http://example.org/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema:Thing a owl:Class ;
+    owl:equivalentClass owl:Thing .
+
+foaf:Thing a owl:Class ;
+    owl:equivalentClass owl:Thing .
+
+rdfs:Resource a owl:Class ;
+    owl:equivalentClass owl:Thing .
+
+ex:Owner a rdfs:Class ;
+    rdfs:label "Owner" ;
+    rdfs:subClassOf foaf:Agent ;
+    rdfs:comment "An entity with the ownership over another entity" .
+    
+ex:EShop a rdfs:Class ;
+    rdfs:label "E-Shop" ;
+    rdfs:subClassOf schema:WebSite ;
+    rdfs:comment "A website operating as an online shop" .
+
+ex:Item a rdfs:Class ;
+    rdfs:label "Item" ;
+    rdfs:subClassOf schema:Product ;
+    rdfs:comment "A single item for sale in an online shop" .
+
+ex:Cart a rdfs:Class ;
+    rdfs:label "Cart" ;
+    rdfs:subClassOf schema:ItemList ;
+    rdfs:comment "A collection of items chosen for purchase" .
+
+ex:Account a rdfs:Class ;
+    rdfs:label "Account" ;
+    rdfs:subClassOf foaf:OnlineAccount ;
+    rdfs:comment "An account in an online shop" .
+
+ex:Shopper a rdfs:Class ;
+    rdfs:label "Shopper" ;
+    rdfs:subClassOf foaf:Person ;
+    rdfs:comment "A person with an account in an online shop" .
+
+ex:password a owl:DatatypeProperty ;
+    rdfs:label "password" ;
+    rdfs:domain foaf:OnlineAccount ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A password for an account in an online shop" .
+
+ex:owns a owl:ObjectProperty ;
+    rdfs:label "owns" ;
+    rdfs:domain foaf:Agent ;
+    rdfs:range owl:Thing ;
+    rdfs:comment "An Agent owns a Thing" .
+
+ex:provides a owl:ObjectProperty ;
+    rdfs:label "provides" ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:comment "A Thing provides access to another Thing" .
+
+ex:contains a owl:ObjectProperty ;
+    rdfs:label "contains" ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:comment "A Thing contains another Thing" .
