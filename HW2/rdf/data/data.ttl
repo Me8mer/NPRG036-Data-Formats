@@ -4,6 +4,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 
 schema:Thing a owl:Class ;
     owl:equivalentClass owl:Thing .
@@ -15,55 +16,169 @@ rdfs:Resource a owl:Class ;
     owl:equivalentClass owl:Thing .
 
 ex:Owner a rdfs:Class ;
-    rdfs:label "Owner" ;
+    rdfs:label "Owner"@en ;
     rdfs:subClassOf foaf:Agent ;
-    rdfs:comment "An entity with the ownership over another entity" .
+    rdfs:comment "An entity with the ownership over another entity"@en .
     
 ex:EShop a rdfs:Class ;
-    rdfs:label "E-Shop" ;
+    rdfs:label "E-Shop"@en ;
     rdfs:subClassOf schema:WebSite ;
-    rdfs:comment "A website operating as an online shop" .
+    rdfs:comment "A website operating as an online shop"@en .
 
 ex:Item a rdfs:Class ;
-    rdfs:label "Item" ;
+    rdfs:label "Item"@en ;
     rdfs:subClassOf schema:Product ;
-    rdfs:comment "A single item for sale in an online shop" .
+    rdfs:comment "A single item for sale in an online shop"@en .
 
 ex:Cart a rdfs:Class ;
-    rdfs:label "Cart" ;
+    rdfs:label "Cart"@en ;
     rdfs:subClassOf schema:ItemList ;
-    rdfs:comment "A collection of items chosen for purchase" .
+    rdfs:comment "A collection of items chosen for purchase"@en .
 
 ex:Account a rdfs:Class ;
-    rdfs:label "Account" ;
+    rdfs:label "Account"@en ;
     rdfs:subClassOf foaf:OnlineAccount ;
-    rdfs:comment "An account in an online shop" .
+    rdfs:comment "An account in an online shop"@en .
 
 ex:Shopper a rdfs:Class ;
-    rdfs:label "Shopper" ;
+    rdfs:label "Shopper"@en ;
     rdfs:subClassOf foaf:Person ;
-    rdfs:comment "A person with an account in an online shop" .
+    rdfs:comment "A person with an account in an online shop"@en .
 
 ex:password a owl:DatatypeProperty ;
-    rdfs:label "password" ;
+    rdfs:label "password"@en ;
     rdfs:domain foaf:OnlineAccount ;
     rdfs:range xsd:string ;
-    rdfs:comment "A password for an account in an online shop" .
+    rdfs:comment "A password for an account in an online shop"@en .
 
 ex:owns a owl:ObjectProperty ;
-    rdfs:label "owns" ;
+    rdfs:label "owns"@en ;
     rdfs:domain foaf:Agent ;
     rdfs:range owl:Thing ;
-    rdfs:comment "An Agent owns a Thing" .
+    rdfs:comment "An Agent owns a Thing"@en .
 
 ex:provides a owl:ObjectProperty ;
-    rdfs:label "provides" ;
+    rdfs:label "provides"@en ;
     rdfs:domain owl:Thing ;
     rdfs:range owl:Thing ;
-    rdfs:comment "A Thing provides access to another Thing" .
+    rdfs:comment "A Thing provides access to another Thing"@en .
 
 ex:contains a owl:ObjectProperty ;
-    rdfs:label "contains" ;
+    rdfs:label "contains"@en ;
     rdfs:domain owl:Thing ;
     rdfs:range owl:Thing ;
-    rdfs:comment "A Thing contains another Thing" .
+    rdfs:comment "A Thing contains another Thing"@en .
+
+ex:Corp1 a ex:Owner ;
+    foaf:name "Goth Corp"@en ;
+    dcterms:identifier "FR33Z3"^^xsd:string .
+
+ex:Corp2 a ex:Owner ;
+    foaf:name "Wayne Enterprises"@en ;
+    dcterms:identifier "8UTTL3R"^^xsd:string .
+    
+ex:Corp3 a ex:Owner ;
+     foaf:name "Lex Crop"@en ;
+     dcterms:identifier "HAT3R_1"^^xsd:string .
+
+ex:Customer1 a ex:Shopper ;
+    foaf:firstName "Ferris" ;
+    foaf:familyName "Boyle" .
+
+ex:Customer2 a ex:Shopper ;
+    foaf:firstName "Bruce" ;
+    foaf:familyName "Wayne" .
+
+ex:Customer3 a ex:Shopper ;
+    foaf:firstName "Lex" ;
+    foaf:familyName "Luthor" .
+
+ex:Shop1 a ex:EShop ;
+    foaf:name "Goth Fridges"@en ;
+    schema:url <https://www.gothcorp.com/shop/fridges> ;
+    schema:image <https://example.org/images/fridge.png> .
+
+ex:Shop2 a ex:EShop ;
+    foaf:name "Wayne's Gains"@en ;
+    schema:url <https://www.waynesgains.com> ;
+    schema:image <https://example.org/images/protein.png> .
+
+ex:Shop3 a ex:EShop ;
+    foaf:name "Lex Rides"@en ;
+    schema:url <https://www.lexcorp.com/vehicles/shop> ;
+    schema:image <https://example.org/images/car.png> .
+
+ex:Shop1Item a ex:Item ;
+    foaf:name "Cold Cold Fridge" ;
+    schema:price "999.99"^^xsd:double ;
+    dcterms:description "Perfect to keep your vegetables fresh."@en ;
+    schema:availability <https://schema.org/InStock> ;
+    schema:image <https://example.org/images/fridge_front.png> ,
+                 <https://example.org/images/fridge_side.png> ,
+                 <https://example.org/images/fridge_open.png> .
+
+ex:Shop2Item a ex:Item ;
+    foaf:name "Bat-Protein" ;
+    schema:price "50.49"^^xsd:double ;
+    dcterms:description "Keep out of reach of penguins."@en ;
+    schema:availability <https://schema.org/OutOfStock> ;
+    schema:image <https://example.org/images/protein_top.png> ,
+                 <https://example.org/images/protein_side.png> ,
+                 <https://example.org/images/protein_inside.png> .
+
+ex:Shop3Item a ex:Item ;
+    foaf:name "SuperVan" ;
+    schema:price "10024.99"^^xsd:double ;
+    dcterms:description "Made on Earth by humans."@en ;
+    schema:availability <https://schema.org/PreOrder> ;
+    schema:image <https://example.org/images/van_front.png> ,
+                 <https://example.org/images/van_back.png> ,
+                 <https://example.org/images/van_leather_seats.png> .
+
+ex:Shop1Cart a ex:Cart ;
+    schema:numberOfItems "1"^^xsd:integer ;
+    schema:price "999.99"^^xsd:double .
+
+ex:Shop2Cart a ex:Cart ;
+    schema:numberOfItems "1"^^xsd:integer ;
+    schema:price "50.49"^^xsd:double .
+
+ex:Shop3Cart a ex:Cart ;
+    schema:numberOfItems "1"^^xsd:integer ;
+    schema:price "10024.99"^^xsd:double .
+
+ex:Customer1Account a ex:Account ;
+    foaf:accountName "Boyoyoyle" ;
+    ex:password "nothing2c" .
+
+ex:Customer2Account a ex:Account ;
+    foaf:accountName "BatMan4Ever" ;
+    ex:password "AlfredDaButtler" .
+
+ex:Customer3Account a ex:Account ;
+    foaf:accountName "SuperLoser" ;
+    ex:password "1a1a1A" .
+
+ex:Corp1 ex:owns ex:Shop1 .
+ex:Corp2 ex:owns ex:Shop2 .
+ex:Corp3 ex:owns ex:Shop3 .
+
+ex:Shop1 ex:provides ex:Shop1Item .
+ex:Shop2 ex:provides ex:Shop2Item .
+ex:Shop3 ex:provides ex:Shop3Item .
+
+ex:Shop1 ex:provides ex:Customer1Account .
+ex:Shop2 ex:provides ex:Customer2Account .
+ex:Shop3 ex:provides ex:Customer3Account .
+
+ex:Customer1 ex:owns ex:Customer1Account .
+ex:Customer2 ex:owns ex:Customer2Account .
+ex:Customer3 ex:owns ex:Customer3Account .
+
+ex:Customer1Account ex:provides ex:Shop1Cart .
+ex:Customer2Account ex:provides ex:Shop2Cart .
+ex:Customer3Account ex:provides ex:Shop3Cart .
+
+ex:Shop1Cart ex:contains ex:Shop1Item .
+ex:Shop2Cart ex:contains ex:Shop2Item .
+ex:Shop3Cart ex:contains ex:Shop3Item .
