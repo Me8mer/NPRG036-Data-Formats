@@ -1,0 +1,38 @@
+PREFIX ex: <http://example.org/vocabulary/>
+PREFIX schema: <https://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?shopperFirst ?shopperLast ?itemName ?price ?availability ?shopName ?ownerName
+WHERE {
+  # Shopper and their account
+  ?shopper a ex:Shopper ;
+           foaf:firstName ?shopperFirst ;
+           foaf:familyName ?shopperLast ;
+           ex:owns ?account .
+  ?account ex:provides ?cart .
+
+  # Cart contains an item
+  ?cart ex:contains ?item .
+  ?item a ex:Item ;
+        foaf:name ?itemName ;
+        schema:price ?price .
+
+  # Optional availability (may be absent)
+  OPTIONAL { ?item schema:availability ?availability . }
+
+  # Shop and owner via property path
+  ?shop a ex:EShop ;
+        ex:provides ?item ;
+        foaf:name ?shopName .
+  ?owner a ex:Owner ;
+         foaf:name ?ownerName ;
+         ex:owns ?shop .
+
+  # Filter items above 100 CZK
+  FILTER(?price > 100)
+}
+ORDER BY DESC(?price)
+
+# Notes:
+# Find all Shoppers whose carts contain Items priced above 100, show the Shop that 
+$ provides each item, the Owner of that shop, and the availability of the item.

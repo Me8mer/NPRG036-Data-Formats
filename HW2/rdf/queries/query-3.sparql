@@ -1,0 +1,21 @@
+PREFIX ex: <http://example.org/vocabulary/>
+PREFIX schema: <https://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?ownerName (COUNT(?item) AS ?itemCount) (SUM(?price) AS ?totalValue)
+WHERE {
+  ?owner a ex:Owner ;
+         foaf:name ?ownerName ;
+         ex:owns ?shop .
+  ?shop a ex:EShop ;
+        ex:provides ?item .
+  ?item a ex:Item ;
+        schema:price ?price .
+}
+GROUP BY ?ownerName
+ORDER BY DESC(?totalValue)
+
+# Notes:
+# Find every owner, count how many items they own indirectly through their shops, 
+# compute the sum of those item prices, group the results by owner name, and 
+# order the output by total item value in descending order.

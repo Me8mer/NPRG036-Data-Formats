@@ -1,1 +1,2 @@
 Samuel Lipovský - created covered graph and RDF data
+Peter Vidlička - created SPARQL queries
