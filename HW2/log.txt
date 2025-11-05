@@ -1,2 +1,4 @@
 Samuel Lipovský - created covered graph and RDF data
+Filip Volný - created the example and LPG data
 Peter Vidlička - created SPARQL queries
+Oleksandr Yatsenko - created Cypher queries
