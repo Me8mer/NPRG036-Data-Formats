@@ -82,16 +82,16 @@ ex:Corp3 a ex:Owner ;
      dcterms:identifier "HAT3R_1"^^xsd:string .
 
 ex:Customer1 a ex:Shopper ;
-    foaf:firstName "Ferris" ;
-    foaf:familyName "Boyle" .
+    foaf:givenName "Ferris"@en ;
+    foaf:familyName "Boyle"@en .
 
 ex:Customer2 a ex:Shopper ;
-    foaf:firstName "Bruce" ;
-    foaf:familyName "Wayne" .
+    foaf:givenName "Bruce"@en ;
+    foaf:familyName "Wayne"@en .
 
 ex:Customer3 a ex:Shopper ;
-    foaf:firstName "Lex" ;
-    foaf:familyName "Luthor" .
+    foaf:givenName "Lex"@en ;
+    foaf:familyName "Luthor"@en .
 
 ex:Shop1 a ex:EShop ;
     foaf:name "Goth Fridges"@en ;
@@ -109,7 +109,7 @@ ex:Shop3 a ex:EShop ;
     schema:image <https://example.org/images/car.png> .
 
 ex:Shop1Item a ex:Item ;
-    foaf:name "Cold Cold Fridge" ;
+    foaf:name "Cold Cold Fridge"@en ;
     schema:price "999.99"^^xsd:double ;
     dcterms:description "Perfect to keep your vegetables fresh."@en ;
     schema:availability <https://schema.org/InStock> ;
@@ -118,7 +118,7 @@ ex:Shop1Item a ex:Item ;
                  <https://example.org/images/fridge_open.png> .
 
 ex:Shop2Item a ex:Item ;
-    foaf:name "Bat-Protein" ;
+    foaf:name "Bat-Protein"@en ;
     schema:price "50.49"^^xsd:double ;
     dcterms:description "Keep out of reach of penguins."@en ;
     schema:availability <https://schema.org/OutOfStock> ;
@@ -127,7 +127,7 @@ ex:Shop2Item a ex:Item ;
                  <https://example.org/images/protein_inside.png> .
 
 ex:Shop3Item a ex:Item ;
-    foaf:name "SuperVan" ;
+    foaf:name "SuperVan"@en ;
     schema:price "10024.99"^^xsd:double ;
     dcterms:description "Made on Earth by humans."@en ;
     schema:availability <https://schema.org/PreOrder> ;
@@ -148,15 +148,15 @@ ex:Shop3Cart a ex:Cart ;
     schema:price "10024.99"^^xsd:double .
 
 ex:Customer1Account a ex:Account ;
-    foaf:accountName "Boyoyoyle" ;
+    foaf:accountName "Boyoyoyle"@en ;
     ex:password "nothing2c" .
 
 ex:Customer2Account a ex:Account ;
-    foaf:accountName "BatMan4Ever" ;
+    foaf:accountName "BatMan4Ever"@en ;
     ex:password "AlfredDaButtler" .
 
 ex:Customer3Account a ex:Account ;
-    foaf:accountName "SuperLoser" ;
+    foaf:accountName "SuperLoser"@en ;
     ex:password "1a1a1A" .
 
 ex:Corp1 ex:owns ex:Shop1 .
