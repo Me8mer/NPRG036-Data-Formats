@@ -2,9 +2,9 @@ MERGE (Corp1:Owner {identifier:'FR33Z3'}) ON CREATE SET Corp1.name = 'Goth Corp'
 MERGE (Corp2:Owner {identifier:'8UTTL3R'}) ON CREATE SET Corp2.name = 'Wayne Enterprises'
 MERGE (Corp3:Owner {identifier:'HAT3R_1'}) ON CREATE SET Corp3.name = 'Lex Corp'
 
-MERGE (Customer1:Shopper {familyName:'Boyle'}) ON CREATE SET Customer1.firstName = 'Ferris'
-MERGE (Customer2:Shopper {familyName:'Wayne'}) ON CREATE SET Customer2.firstName = 'Bruce'
-MERGE (Customer3:Shopper {familyName:'Luthor'}) ON CREATE SET Customer3.firstName = 'Lex'
+MERGE (Customer1:Shopper {familyName:'Boyle'}) ON CREATE SET Customer1.givenName = 'Ferris'
+MERGE (Customer2:Shopper {familyName:'Wayne'}) ON CREATE SET Customer2.givenName = 'Bruce'
+MERGE (Customer3:Shopper {familyName:'Luthor'}) ON CREATE SET Customer3.givenName = 'Lex'
 
 MERGE (Shop1:EShop {name: 'Goth Fridges'}) ON CREATE SET Shop1.url = 'https://www.gothcorp.com/shop/fridges', Shop1.image = 'https://example.org/images/fridge.png'
 MERGE (Shop2:EShop {name: "Wayne's Gains"}) ON CREATE SET Shop2.url = 'https://www.waynesgains.com', Shop2.image = 'https://example.org/images/protein.png'
