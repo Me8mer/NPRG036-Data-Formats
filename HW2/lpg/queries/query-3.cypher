@@ -4,7 +4,7 @@ MATCH (account:Account)-[:PROVIDES]->(cart:Cart)-[:CONTAINS]->(item:Item)
 MATCH (customer:Shopper)-[:OWNS]->(account)
 WHERE cart.price > avgCartVal
 RETURN 
-  customer.firstName + ' ' + customer.familyName AS customer,
+  customer.givenName + ' ' + customer.familyName AS customer,
   cart.price AS cartVal,
   round(avgCartVal, 2) AS avgCartValue,
   round(cart.price - avgCartVal, 2) AS aboveAvg,

@@ -9,7 +9,7 @@ RETURN
   shop.name AS shop,
   item.name AS product,
   p.stock AS leftInStock,
-  customer.firstName + ' ' + customer.familyName AS customer,
+  customer.givenName + ' ' + customer.familyName AS customer,
   account.accountName AS username,
   cart.price AS cartTotal
 ORDER BY cartTotal DESC
