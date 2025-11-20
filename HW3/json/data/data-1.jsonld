@@ -1,0 +1,269 @@
+{
+    "@context": {
+        "ex": "http://example.org/vocabulary/",
+        "foaf": "http://xmlns.com/foaf/0.1/",
+        "schema": "https://schema.org/",
+        "dcterms": "http://purl.org/dc/terms/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "Name": "foaf:name",
+        "CompanyID": "dcterms:identifier",
+        "URL": {
+            "@id": "schema:url",
+            "@type": "@id"
+        },
+        "Icon": {
+            "@id": "schema:image",
+            "@type": "@id"
+        },
+        "Login": "foaf:accountName",
+        "Password": "ex:password",
+        "FirstName": "foaf:givenName",
+        "LastName": "foaf:familyName",
+        "ItemCount": {
+            "@id": "schema:numberOfItems",
+            "@type": "xsd:integer"
+        },
+        "TotalPrice": {
+            "@id": "schema:price",
+            "@type": "xsd:double"
+        },
+        "Description": "dcterms:description",
+        "Price": {
+            "@id": "schema:price",
+            "@type": "xsd:double"
+        },
+        "Availability": {
+            "@id": "schema:availability",
+            "@type": "@id"
+        },
+        "PromoImages": {
+            "@id": "schema:image",
+            "@type": "@id"
+        },
+        "EShop": {
+            "@id": "ex:owns",
+            "@type": "@id"
+        },
+        "Account": {
+            "@id": "ex:provides",
+            "@type": "@id"
+        },
+        "Cart": {
+            "@id": "ex:provides",
+            "@type": "@id"
+        },
+        "Item": {
+            "@id": "ex:contains",
+            "@type": "@id"
+        },
+        "ProvidesItem": {
+            "@id": "ex:provides",
+            "@type": "@id"
+        },
+        "ProvidesAccount": {
+            "@id": "ex:provides",
+            "@type": "@id"
+        },
+        "OwnedAccount": {
+            "@id": "ex:owns",
+            "@type": "@id"
+        },
+        "OwnsAccount": {
+            "@id": "ex:owns",
+            "@type": "@id"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "ex:Corp1",
+            "@type": "ex:Owner",
+            "Name": "Goth Corp",
+            "CompanyID": "FR33Z3",
+            "EShop": [
+                "ex:Shop1"
+            ]
+        },
+        {
+            "@id": "ex:Shop1",
+            "@type": "ex:EShop",
+            "Name": "Goth Fridges",
+            "URL": "https://www.gothcorp.com/shop/fridges",
+            "Icon": "https://example.org/images/fridge.png",
+            "ProvidesItem": [
+                "ex:Shop1Item"
+            ],
+            "ProvidesAccount": [
+                "ex:Customer1Account"
+            ],
+            "Account": [
+                "ex:Customer1Account"
+            ]
+        },
+        {
+            "@id": "ex:Customer1Account",
+            "@type": "ex:Account",
+            "Login": "Boyoyoyle",
+            "Password": "nothing2c",
+            "OwnedAccount": "ex:Customer1Account",
+            "Cart": [
+                "ex:Shop1Cart"
+            ]
+        },
+        {
+            "@id": "ex:Customer1",
+            "@type": "ex:Shopper",
+            "FirstName": "Ferris",
+            "LastName": "Boyle",
+            "OwnsAccount": "ex:Customer1Account"
+        },
+        {
+            "@id": "ex:Shop1Cart",
+            "@type": "ex:Cart",
+            "ItemCount": 1,
+            "TotalPrice": 999.99,
+            "Item": [
+                "ex:Shop1Item"
+            ]
+        },
+        {
+            "@id": "ex:Shop1Item",
+            "@type": "ex:Item",
+            "Name": "Cold Cold Fridge",
+            "Price": {
+                "@value": 999.99,
+                "@type": "xsd:double"
+            },
+            "Description": "Perfect to keep your vegetables fresh.",
+            "Availability": "https://schema.org/InStock",
+            "PromoImages": [
+                "https://example.org/images/fridge_front.png",
+                "https://example.org/images/fridge_side.png",
+                "https://example.org/images/fridge_open.png"
+            ]
+        },
+        {
+            "@id": "ex:Corp2",
+            "@type": "ex:Owner",
+            "Name": "Wayne Enterprises",
+            "CompanyID": "8UTTL3R",
+            "EShop": [
+                "ex:Shop2"
+            ]
+        },
+        {
+            "@id": "ex:Shop2",
+            "@type": "ex:EShop",
+            "Name": "Wayne's Gains",
+            "URL": "https://www.waynesgains.com",
+            "Icon": "https://example.org/images/protein.png",
+            "ProvidesItem": "ex:Shop2Item",
+            "ProvidesAccount": "ex:Customer2Account",
+            "Account": [
+                "ex:Customer2Account"
+            ]
+        },
+        {
+            "@id": "ex:Customer2Account",
+            "@type": "ex:Account",
+            "Login": "BatMan4Ever",
+            "Password": "AlfredDaButtler",
+            "Cart": [
+                "ex:Shop2Cart"
+            ]
+        },
+        {
+            "@id": "ex:Customer2",
+            "@type": "ex:Shopper",
+            "FirstName": "Bruce",
+            "LastName": "Wayne",
+            "OwnsAccount": "ex:Customer2Account"
+        },
+        {
+            "@id": "ex:Shop2Cart",
+            "@type": "ex:Cart",
+            "ItemCount": 1,
+            "TotalPrice": 50.49,
+            "Item": [
+                "ex:Shop2Item"
+            ]
+        },
+        {
+            "@id": "ex:Shop2Item",
+            "@type": "ex:Item",
+            "Name": "Bat-Protein",
+            "Price": {
+                "@value": 50.49,
+                "@type": "xsd:double"
+            },
+            "Description": "Keep out of reach of penguins.",
+            "Availability": "https://schema.org/OutOfStock",
+            "PromoImages": [
+                "https://example.org/images/protein_top.png",
+                "https://example.org/images/protein_side.png",
+                "https://example.org/images/protein_inside.png"
+            ]
+        },
+        {
+            "@id": "ex:Corp3",
+            "@type": "ex:Owner",
+            "Name": "Lex Crop",
+            "CompanyID": "HAT3R_1",
+            "EShop": [
+                "ex:Shop3"
+            ]
+        },
+        {
+            "@id": "ex:Shop3",
+            "@type": "ex:EShop",
+            "Name": "Lex Rides",
+            "URL": "https://www.lexcorp.com/vehicles/shop",
+            "Icon": "https://example.org/images/car.png",
+            "ProvidesItem": "ex:Shop3Item",
+            "ProvidesAccount": "ex:Customer3Account",
+            "Account": [
+                "ex:Customer3Account"
+            ]
+        },
+        {
+            "@id": "ex:Customer3Account",
+            "@type": "ex:Account",
+            "Login": "SuperLoser",
+            "Password": "1a1a1A",
+            "Cart": [
+                "ex:Shop3Cart"
+            ]
+        },
+        {
+            "@id": "ex:Customer3",
+            "@type": "ex:Shopper",
+            "FirstName": "Lex",
+            "LastName": "Luthor",
+            "OwnsAccount": "ex:Customer3Account"
+        },
+        {
+            "@id": "ex:Shop3Cart",
+            "@type": "ex:Cart",
+            "ItemCount": 1,
+            "TotalPrice": 10024.99,
+            "Item": [
+                "ex:Shop3Item"
+            ]
+        },
+        {
+            "@id": "ex:Shop3Item",
+            "@type": "ex:Item",
+            "Name": "SuperVan",
+            "Price": {
+                "@value": 10024.99,
+                "@type": "xsd:double"
+            },
+            "Description": "Made on Earth by humans.",
+            "Availability": "https://schema.org/PreOrder",
+            "PromoImages": [
+                "https://example.org/images/van_front.png",
+                "https://example.org/images/van_back.png",
+                "https://example.org/images/van_leather_seats.png"
+            ]
+        }
+    ]
+}

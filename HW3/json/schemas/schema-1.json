@@ -1,0 +1,183 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.org/schemas/online-shop-hierarchy.json",
+    "title": "Online Shop hierarchy",
+    "type": "object",
+    "properties": {
+        "@id": {
+            "type": "string",
+            "format": "uri-reference"
+        },
+        "Owner": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Owner"
+            }
+        }
+    },
+    "required": [
+        "Owner"
+    ],
+    "$defs": {
+        "Owner": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "CompanyID": {
+                    "type": "string"
+                },
+                "EShop": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/EShop"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "CompanyID"
+            ]
+        },
+        "EShop": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "URL": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "Icon": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "Account": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Account"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "URL",
+                "Icon"
+            ]
+        },
+        "Account": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "Login": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "Shopper": {
+                    "$ref": "#/$defs/Shopper"
+                },
+                "Cart": {
+                    "$ref": "#/$defs/Cart"
+                }
+            },
+            "required": [
+                "Login",
+                "Password"
+            ]
+        },
+        "Shopper": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "FirstName",
+                "LastName"
+            ]
+        },
+        "Cart": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "ItemCount": {
+                    "type": "integer"
+                },
+                "TotalPrice": {
+                    "type": "number"
+                },
+                "Item": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Item"
+                    }
+                }
+            },
+            "required": [
+                "ItemCount",
+                "TotalPrice"
+            ]
+        },
+        "Item": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Price": {
+                    "type": "number"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "Availability": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "PromoImages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "uri"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "Price",
+                "Description",
+                "Availability"
+            ]
+        }
+    }
+}
