@@ -32,7 +32,7 @@
                 "CompanyID": {
                     "type": "string"
                 },
-                "EShop": {
+                "OwnsEshop": {
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/EShop"
@@ -41,7 +41,8 @@
             },
             "required": [
                 "Name",
-                "CompanyID"
+                "CompanyID",
+                "@id"
             ]
         },
         "EShop": {
@@ -62,17 +63,15 @@
                     "type": "string",
                     "format": "uri"
                 },
-                "Account": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/Account"
-                    }
+                "ProvidesAccount": {
+                    "$ref": "#/$defs/Account"
                 }
             },
             "required": [
                 "Name",
                 "URL",
-                "Icon"
+                "Icon",
+                "@id"
             ]
         },
         "Account": {
@@ -91,13 +90,14 @@
                 "Shopper": {
                     "$ref": "#/$defs/Shopper"
                 },
-                "Cart": {
+                "ProvidesCart": {
                     "$ref": "#/$defs/Cart"
                 }
             },
             "required": [
                 "Login",
-                "Password"
+                "Password",
+                "@id"
             ]
         },
         "Shopper": {
@@ -116,7 +116,8 @@
             },
             "required": [
                 "FirstName",
-                "LastName"
+                "LastName",
+                "@id"
             ]
         },
         "Cart": {
@@ -130,9 +131,21 @@
                     "type": "integer"
                 },
                 "TotalPrice": {
-                    "type": "number"
+                    "type": "object",
+                    "properties": {
+                        "@value": {
+                            "type": "string"
+                        },
+                        "@type": {
+                            "const": "xsd:double"
+                        }
+                    },
+                    "required": [
+                        "@value",
+                        "@type"
+                    ]
                 },
-                "Item": {
+                "ContainsItem": {
                     "type": "array",
                     "items": {
                         "$ref": "#/$defs/Item"
@@ -141,7 +154,8 @@
             },
             "required": [
                 "ItemCount",
-                "TotalPrice"
+                "TotalPrice",
+                "@id"
             ]
         },
         "Item": {
@@ -155,7 +169,19 @@
                     "type": "string"
                 },
                 "Price": {
-                    "type": "number"
+                    "type": "object",
+                    "properties": {
+                        "@value": {
+                            "type": "string"
+                        },
+                        "@type": {
+                            "const": "xsd:double"
+                        }
+                    },
+                    "required": [
+                        "@value",
+                        "@type"
+                    ]
                 },
                 "Description": {
                     "type": "string"
@@ -176,7 +202,8 @@
                 "Name",
                 "Price",
                 "Description",
-                "Availability"
+                "Availability",
+                "@id"
             ]
         }
     }

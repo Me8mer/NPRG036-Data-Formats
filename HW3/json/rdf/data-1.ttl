@@ -1,0 +1,122 @@
+@prefix ns0: <http://example.org/vocabulary/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <https://schema.org/> .
+
+<http://example.org/vocabulary/Corp1>
+  a <http://example.org/vocabulary/Owner> ;
+  ns0:owns ns0:Shop1 ;
+  dc:identifier "FR33Z3"^^xsd:string ;
+  foaf:name "Goth Corp"@en .
+
+ns0:Shop1
+  a ns0:EShop ;
+  ns0:provides ns0:Customer1Account, ns0:Shop1Item ;
+  foaf:name "Goth Fridges"@en ;
+  ns1:image <https://example.org/images/fridge.png> ;
+  ns1:url <https://www.gothcorp.com/shop/fridges> .
+
+ns0:Customer1Account
+  a ns0:Account ;
+  ns0:password "nothing2c"^^xsd:string ;
+  ns0:provides ns0:Shop1Cart ;
+  foaf:accountName "Boyoyoyle"^^xsd:string .
+
+ns0:Shop1Item
+  a ns0:Item ;
+  dc:description "Perfect to keep your vegetables fresh."^^xsd:string ;
+  foaf:name "Cold Cold Fridge"@en ;
+  ns1:availability ns1:InStock ;
+  ns1:image <https://example.org/images/fridge_front.png>, <https://example.org/images/fridge_side.png>, <https://example.org/images/fridge_open.png> ;
+  ns1:price 9.999900e+2 .
+
+ns0:Shop1Cart
+  a ns0:Cart ;
+  ns0:contains ns0:Shop1Item ;
+  ns1:numberOfItems 1 ;
+  ns1:price 9.999900e+2 .
+
+ns0:Customer1
+  a ns0:Shopper ;
+  ns0:owns ns0:Customer1Account ;
+  foaf:familyName "Boyle"^^xsd:string ;
+  foaf:givenName "Ferris"^^xsd:string .
+
+ns0:Corp2
+  a ns0:Owner ;
+  ns0:owns ns0:Shop2 ;
+  dc:identifier "8UTTL3R"^^xsd:string ;
+  foaf:name "Wayne Enterprises"@en .
+
+ns0:Shop2
+  a ns0:EShop ;
+  ns0:provides ns0:Customer2Account, ns0:Shop2Item ;
+  foaf:name "Wayne's Gains"@en ;
+  ns1:image <https://example.org/images/protein.png> ;
+  ns1:url <https://www.waynesgains.com> .
+
+ns0:Customer2Account
+  a ns0:Account ;
+  ns0:password "AlfredDaButtler"^^xsd:string ;
+  ns0:provides ns0:Shop2Cart ;
+  foaf:accountName "BatMan4Ever"^^xsd:string .
+
+ns0:Shop2Item
+  a ns0:Item ;
+  dc:description "Keep out of reach of penguins."^^xsd:string ;
+  foaf:name "Bat-Protein"@en ;
+  ns1:availability ns1:OutOfStock ;
+  ns1:image <https://example.org/images/protein_top.png>, <https://example.org/images/protein_side.png>, <https://example.org/images/protein_inside.png> ;
+  ns1:price 5.049000e+1 .
+
+ns0:Shop2Cart
+  a ns0:Cart ;
+  ns0:contains ns0:Shop2Item ;
+  ns1:numberOfItems 1 ;
+  ns1:price 5.049000e+1 .
+
+ns0:Customer2
+  a ns0:Shopper ;
+  ns0:owns ns0:Customer2Account ;
+  foaf:familyName "Wayne"^^xsd:string ;
+  foaf:givenName "Bruce"^^xsd:string .
+
+ns0:Corp3
+  a ns0:Owner ;
+  ns0:owns ns0:Shop3 ;
+  dc:identifier "HAT3R_1"^^xsd:string ;
+  foaf:name "Lex Crop"@en .
+
+ns0:Shop3
+  a ns0:EShop ;
+  ns0:provides ns0:Customer3Account, ns0:Shop3Item ;
+  foaf:name "Lex Rides"@en ;
+  ns1:image <https://example.org/images/car.png> ;
+  ns1:url <https://www.lexcorp.com/vehicles/shop> .
+
+ns0:Customer3Account
+  a ns0:Account ;
+  ns0:password "1a1a1A"^^xsd:string ;
+  ns0:provides ns0:Shop3Cart ;
+  foaf:accountName "SuperLoser"^^xsd:string .
+
+ns0:Shop3Item
+  a ns0:Item ;
+  dc:description "Made on Earth by humans."^^xsd:string ;
+  foaf:name "SuperVan"@en ;
+  ns1:availability ns1:PreOrder ;
+  ns1:image <https://example.org/images/van_front.png>, <https://example.org/images/van_back.png>, <https://example.org/images/van_leather_seats.png> ;
+  ns1:price 1.002499e+4 .
+
+ns0:Shop3Cart
+  a ns0:Cart ;
+  ns0:contains ns0:Shop3Item ;
+  ns1:numberOfItems 1 ;
+  ns1:price 1.002499e+4 .
+
+ns0:Customer3
+  a ns0:Shopper ;
+  ns0:owns ns0:Customer3Account ;
+  foaf:familyName "Luthor"^^xsd:string ;
+  foaf:givenName "Lex"^^xsd:string .

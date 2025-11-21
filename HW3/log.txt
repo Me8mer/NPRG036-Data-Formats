@@ -1,0 +1,4 @@
+Samuel Lipovský - 
+Filip Volný - 
+Peter Vidlička - Created Hierarchical model, created JSON schema, JSON-LD and generated RDF turtle
+Oleksandr Yatsenko - 
