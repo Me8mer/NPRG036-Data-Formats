@@ -1,0 +1,12 @@
+[
+  .EShop[] | . as $shop |
+  .ProvidesItem[] | . as $item |
+  {
+    shopID: $shop."@id",
+    itemID: $item."@id",
+    relationship: "provides"
+  }
+] | .[]
+
+
+# shops with their provided items
