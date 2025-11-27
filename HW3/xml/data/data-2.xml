@@ -1,0 +1,49 @@
+<ItemsHierarchy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xsi:noNamespaceSchemaLocation="./../schemas/schema-1.xsd">
+  
+  <EShop>
+    <Name xml:lang="en">Goth Fridges</Name>
+    <URL>https://www.gothcorp.com/shop/fridges</URL>
+    <Icon>https://example.org/images/fridge.png</Icon>
+    <Item>
+      <Name xml:lang="en">Cold Cold Fridge</Name>
+      <Price>999.99</Price>
+      <Description xml:lang="en">Perfect to keep your vegetables fresh.</Description>
+      <Available>InStock</Available>
+      <PromoImages>https://example.org/images/fridge_front.png</PromoImages>
+      <PromoImages>https://example.org/images/fridge_side.png</PromoImages>
+      <PromoImages>https://example.org/images/fridge_open.png</PromoImages>
+    </Item>
+  </EShop>
+
+  <EShop>
+    <Name xml:lang="en">Wayne's Gains</Name>
+    <URL>https://www.waynesgains.com</URL>
+    <Icon>https://example.org/images/protein.png</Icon>
+    <Item>
+      <Name xml:lang="en">Bat-Protein</Name>
+      <Price>50.49</Price>
+      <Description xml:lang="en">Keep out of reach of penguins.</Description>
+      <Available>OutOfStock</Available>
+      <PromoImages>https://example.org/images/protein_top.png</PromoImages>
+      <PromoImages>https://example.org/images/protein_side.png</PromoImages>
+      <PromoImages>https://example.org/images/protein_inside.png</PromoImages>
+    </Item>
+  </EShop>
+
+  <EShop>
+    <Name xml:lang="en">Lex Rides</Name>
+    <URL>https://www.lexcorp.com/vehicles/shop</URL>
+    <Icon>https://example.org/images/car.png</Icon>
+    <Item>
+      <Name xml:lang="en">SuperVan</Name>
+      <Price>10024.99</Price>
+      <Description xml:lang="en">Made on Earth by humans.</Description>
+      <Available>PreOrder</Available>
+      <PromoImages>https://example.org/images/van_front.png</PromoImages>
+      <PromoImages>https://example.org/images/van_back.png</PromoImages>
+      <PromoImages>https://example.org/images/van_leather_seats.png</PromoImages>
+    </Item>
+  </EShop>
+
+</ItemsHierarchy>

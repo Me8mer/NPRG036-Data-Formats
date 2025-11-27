@@ -1,0 +1,49 @@
+@prefix ex: <http://example.org/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+ex:EShop1 a ex:EShop ;
+  foaf:name "Goth Fridges"@en ;
+  schema:url <https://www.gothcorp.com/shop/fridges> ;
+  schema:image <https://example.org/images/fridge.png> .
+
+ex:Item1 a ex:Item ;
+  foaf:name "Cold Cold Fridge"@en ;
+  schema:price "999.99"^^xsd:decimal ;
+  dcterms:description "Perfect to keep your vegetables fresh."@en ;
+  schema:availability <InStock> ;
+  schema:image <https://example.org/images/fridge_front.png> ;
+  schema:image <https://example.org/images/fridge_side.png> ;
+  schema:image <https://example.org/images/fridge_open.png> .
+
+ex:EShop2 a ex:EShop ;
+  foaf:name "Wayne's Gains"@en ;
+  schema:url <https://www.waynesgains.com> ;
+  schema:image <https://example.org/images/protein.png> .
+
+ex:Item2 a ex:Item ;
+  foaf:name "Bat-Protein"@en ;
+  schema:price "50.49"^^xsd:decimal ;
+  dcterms:description "Keep out of reach of penguins."@en ;
+  schema:availability <OutOfStock> ;
+  schema:image <https://example.org/images/protein_top.png> ;
+  schema:image <https://example.org/images/protein_side.png> ;
+  schema:image <https://example.org/images/protein_inside.png> .
+
+ex:EShop3 a ex:EShop ;
+  foaf:name "Lex Rides"@en ;
+  schema:url <https://www.lexcorp.com/vehicles/shop> ;
+  schema:image <https://example.org/images/car.png> .
+
+ex:Item3 a ex:Item ;
+  foaf:name "SuperVan"@en ;
+  schema:price "10024.99"^^xsd:decimal ;
+  dcterms:description "Made on Earth by humans."@en ;
+  schema:availability <PreOrder> ;
+  schema:image <https://example.org/images/van_front.png> ;
+  schema:image <https://example.org/images/van_back.png> ;
+  schema:image <https://example.org/images/van_leather_seats.png> .
