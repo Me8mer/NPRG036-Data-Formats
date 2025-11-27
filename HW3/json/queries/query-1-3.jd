@@ -1,0 +1,15 @@
+[
+  .Owner[] |
+  .OwnsEshop[] | . as $shop |
+  .ProvidesAccount | . as $account |
+  .ProvidesCart.ContainsItem[] | . as $item |
+  {
+    shop: $shop.Name,
+    product: $item.Name,
+    price: ($item.Price."@value" | tonumber),
+    customer: ($account.Shopper.FirstName + " " + $account.Shopper.LastName),
+    description: $item.Description
+  }
+] | sort_by(-.price) | .[]
+
+# listing of products with basic information

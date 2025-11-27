@@ -1,0 +1,20 @@
+[
+  .Owner[] |
+  .OwnsEshop[] | . as $shop |
+  .ProvidesAccount.ProvidesCart.ContainsItem[] | . as $item |
+  {
+    shop: $shop.Name,
+    product: $item.Name,
+    price: ($item.Price."@value" | tonumber),
+    availability: (
+      if $item.Availability == "https://schema.org/InStock" then "In Stock"
+      elif $item.Availability == "https://schema.org/OutOfStock" then "Out of Stock"
+      elif $item.Availability == "https://schema.org/PreOrder" then "Pre Order"
+      else "Unknown"
+      end
+    ),
+    description: $item.Description
+  }
+] | sort_by(.price) | .[]
+
+# shows all products grouped by their availability and sorted by price

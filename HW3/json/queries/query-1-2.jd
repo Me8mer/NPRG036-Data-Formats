@@ -1,0 +1,16 @@
+[
+  .Owner[] |
+  .OwnsEshop[] | . as $shop |
+  .ProvidesAccount | . as $account |
+  .Shopper | . as $customer |
+  $account.ProvidesCart | . as $cart |
+  {
+    customer: ($customer.FirstName + " " + $customer.LastName),
+    username: $account.Login,
+    shop: $shop.Name,
+    cartItems: $cart.ItemCount,
+    cartVal: ($cart.TotalPrice."@value" | tonumber),
+  }
+] | sort_by(.cartVal) | .[]
+
+# customer details with their cart information
