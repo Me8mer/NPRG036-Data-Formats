@@ -1,0 +1,36 @@
+{
+    "@context": {
+        "ex": "http://example.org/vocabulary/",
+        "EShop": "@graph",
+        "ProvidesItem": {
+            "@id": "ex:provides",
+            "@type": "@id"
+        }
+    },
+    "EShop": [
+        {
+            "@id": "ex:Shop1",
+            "ProvidesItem": [
+                {
+                    "@id": "ex:Shop1Item"
+                }
+            ]
+        },
+        {
+            "@id": "ex:Shop2",
+            "ProvidesItem": [
+                {
+                    "@id": "ex:Shop2Item"
+                }
+            ]
+        },
+        {
+            "@id": "ex:Shop3",
+            "ProvidesItem": [
+                {
+                    "@id": "ex:Shop3Item"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+@prefix ns0: <http://example.org/vocabulary/> .
+
+<http://example.org/vocabulary/Shop1> ns0:provides ns0:Shop1Item .
+ns0:Shop2 ns0:provides ns0:Shop2Item .
+ns0:Shop3 ns0:provides ns0:Shop3Item .

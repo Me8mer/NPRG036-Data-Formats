@@ -1,0 +1,54 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.org/schemas/online-shop-hierarchy-2.json",
+    "title": "Online Shop hierarchy model 2",
+    "type": "object",
+    "properties": {
+        "@id": {
+            "type": "string",
+            "format": "uri-reference"
+        },
+        "EShop": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/EShop"
+            }
+        }
+    },
+    "required": [
+        "EShop"
+    ],
+    "$defs": {
+        "EShop": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "ProvidesItem": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ItemRef"
+                    }
+                }
+            },
+            "required": [
+                "@id",
+                "ProvidesItem"
+            ]
+        },
+        "ItemRef": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string",
+                    "format": "uri-reference"
+                }
+            },
+            "required": [
+                "@id"
+            ]
+        }
+    }
+}
