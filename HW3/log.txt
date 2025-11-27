@@ -1,4 +1,4 @@
 Samuel Lipovský - Created XML schema and data representation, translation to html and rdf, and turtle data file
-Filip Volný - 
+Filip Volný - Created XML queries
 Peter Vidlička - Created Hierarchical model, created JSON schema, JSON-LD and generated RDF turtle
 Oleksandr Yatsenko - 
