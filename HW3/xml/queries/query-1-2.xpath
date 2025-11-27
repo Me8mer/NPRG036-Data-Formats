@@ -1,0 +1,1 @@
+//Owner[starts-with(CompanyID, 'H')]/EShop/Name/text() (: Find the names of Eshops with CompanyID starting with letter 'H' :)
