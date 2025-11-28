@@ -1,5 +1,5 @@
 <ItemsHierarchy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                xsi:noNamespaceSchemaLocation="./../schemas/schema-1.xsd">
+                xsi:noNamespaceSchemaLocation="./../schemas/schema-2.xsd">
   
   <EShop>
     <Name xml:lang="en">Goth Fridges</Name>
