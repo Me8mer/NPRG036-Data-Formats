@@ -1,0 +1,31 @@
+@prefix ex: <http://example.org/vocabulary/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+ex:Shopper1 a ex:Shopper ;
+  foaf:givenName "Ferris"@en ;
+  foaf:familyName "Boyle"@en .
+
+ex:Account1 a ex:Account ;
+  foaf:accountName "Boyoyoyle"@en;
+  ex:password "nothing2c" .
+
+ex:Shopper2 a ex:Shopper ;
+  foaf:givenName "Bruce"@en ;
+  foaf:familyName "Wayne"@en .
+
+ex:Account2 a ex:Account ;
+  foaf:accountName "BatMan4Ever"@en;
+  ex:password "AlfredDaButtler" .
+
+ex:Shopper3 a ex:Shopper ;
+  foaf:givenName "Lex"@en ;
+  foaf:familyName "Luthor"@en .
+
+ex:Account3 a ex:Account ;
+  foaf:accountName "SuperLoser"@en;
+  ex:password "1a1a1A" .

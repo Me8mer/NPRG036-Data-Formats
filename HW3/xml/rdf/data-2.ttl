@@ -6,11 +6,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
-ex:EShop1 a ex:EShop ;
-  foaf:name "Goth Fridges"@en ;
-  schema:url <https://www.gothcorp.com/shop/fridges> ;
-  schema:image <https://example.org/images/fridge.png> .
-
 ex:Item1 a ex:Item ;
   foaf:name "Cold Cold Fridge"@en ;
   schema:price "999.99"^^xsd:decimal ;
@@ -20,10 +15,14 @@ ex:Item1 a ex:Item ;
   schema:image <https://example.org/images/fridge_side.png> ;
   schema:image <https://example.org/images/fridge_open.png> .
 
-ex:EShop2 a ex:EShop ;
-  foaf:name "Wayne's Gains"@en ;
-  schema:url <https://www.waynesgains.com> ;
-  schema:image <https://example.org/images/protein.png> .
+ex:EShop1 a ex:EShop ;
+  foaf:name "Goth Fridges"@en ;
+  schema:url <https://www.gothcorp.com/shop/fridges> ;
+  schema:image <https://example.org/images/fridge.png> .
+
+ex:Cart1 a ex:Cart ;
+  schema:numberOfItems "1"^^xsd:integer ;
+  schema:price "999.99"^^xsd:double .
 
 ex:Item2 a ex:Item ;
   foaf:name "Bat-Protein"@en ;
@@ -34,10 +33,14 @@ ex:Item2 a ex:Item ;
   schema:image <https://example.org/images/protein_side.png> ;
   schema:image <https://example.org/images/protein_inside.png> .
 
-ex:EShop3 a ex:EShop ;
-  foaf:name "Lex Rides"@en ;
-  schema:url <https://www.lexcorp.com/vehicles/shop> ;
-  schema:image <https://example.org/images/car.png> .
+ex:EShop2 a ex:EShop ;
+  foaf:name "Wayne's Gains"@en ;
+  schema:url <https://www.waynesgains.com> ;
+  schema:image <https://example.org/images/protein.png> .
+
+ex:Cart2 a ex:Cart ;
+  schema:numberOfItems "1"^^xsd:integer ;
+  schema:price "50.49"^^xsd:double .
 
 ex:Item3 a ex:Item ;
   foaf:name "SuperVan"@en ;
@@ -47,3 +50,12 @@ ex:Item3 a ex:Item ;
   schema:image <https://example.org/images/van_front.png> ;
   schema:image <https://example.org/images/van_back.png> ;
   schema:image <https://example.org/images/van_leather_seats.png> .
+
+ex:EShop3 a ex:EShop ;
+  foaf:name "Lex Rides"@en ;
+  schema:url <https://www.lexcorp.com/vehicles/shop> ;
+  schema:image <https://example.org/images/car.png> .
+
+ex:Cart3 a ex:Cart ;
+  schema:numberOfItems "1"^^xsd:integer ;
+  schema:price "10024.99"^^xsd:double .

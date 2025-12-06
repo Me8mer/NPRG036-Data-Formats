@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="https://www.w3.org/2009/01/xml.xsd" />
+
+	<xs:complexType name="AccountType">
+		<xs:sequence>
+			<xs:element name="Login" type="LangStringType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Password" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ShopperType">
+		<xs:sequence>
+			<xs:element name="FirstName" type="LangStringType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="LastName" type="LangStringType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Account" type="AccountType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ShopperHierarchy">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Shopper" type="ShopperType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="LangStringType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="xml:lang" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

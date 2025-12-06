@@ -1,0 +1,31 @@
+<ShopperHierarchy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                xsi:noNamespaceSchemaLocation="./../schemas/schema-3.xsd">
+  <Shopper>
+    <FirstName xml:lang="en">Ferris</FirstName>
+    <LastName xml:lang="en">Boyle</LastName>
+    <Account>
+      <Login xml:lang="en">Boyoyoyle</Login>
+      <Password>nothing2c</Password>
+    </Account>
+  </Shopper>
+
+
+  <Shopper>
+    <FirstName xml:lang="en">Bruce</FirstName>
+    <LastName xml:lang="en">Wayne</LastName>
+    <Account>
+      <Login xml:lang="en">BatMan4Ever</Login>
+      <Password>AlfredDaButtler</Password>
+    </Account>
+  </Shopper>
+
+  <Shopper>
+    <FirstName xml:lang="en">Lex</FirstName>
+    <LastName xml:lang="en">Luthor</LastName>
+    <Account>
+      <Login xml:lang="en">SuperLoser</Login>
+      <Password>1a1a1A</Password>
+    </Account>
+  </Shopper>
+
+</ShopperHierarchy>

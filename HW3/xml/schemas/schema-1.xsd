@@ -24,7 +24,6 @@
 		<xs:sequence>
 			<xs:element name="Login" type="LangStringType" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="Password" type="xs:string" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Shopper" type="ShopperType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="Cart" type="CartType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -33,36 +32,10 @@
 		<xs:sequence>
 			<xs:element name="ItemCount" type="xs:integer" minOccurs="1" maxOccurs="1"/>
 			<xs:element name="TotalPrice" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Item" type="ItemType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="ShopperType">
-		<xs:sequence>
-			<xs:element name="FirstName" type="LangStringType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="LastName" type="LangStringType" minOccurs="1" maxOccurs="1"/>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="ItemType">
-		<xs:sequence>
-			<xs:element name="Name" type="LangStringType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Price" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Description" type="LangStringType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="Available" minOccurs="1" maxOccurs="1">
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="InStock"/>
-						<xs:enumeration value="OutOfStock"/>
-						<xs:enumeration value="PreOrder"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="PromoImages" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:element name="EshopHierarchy">
+	<xs:element name="EShopHierarchy">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Owner" type="OwnerType" minOccurs="0" maxOccurs="unbounded"/>

@@ -1,4 +1,4 @@
-<EshopHierarchy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<EShopHierarchy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                 xsi:noNamespaceSchemaLocation="./../schemas/schema-1.xsd">
   
   <Owner>
@@ -11,22 +11,9 @@
       <Account>
         <Login xml:lang="en">Boyoyoyle</Login>
         <Password>nothing2c</Password>
-        <Shopper>
-          <FirstName xml:lang="en">Ferris</FirstName>
-          <LastName xml:lang="en">Boyle</LastName>
-        </Shopper>
         <Cart>
           <ItemCount>1</ItemCount>
           <TotalPrice>999.99</TotalPrice>
-          <Item>
-            <Name xml:lang="en">Cold Cold Fridge</Name>
-            <Price>999.99</Price>
-            <Description xml:lang="en">Perfect to keep your vegetables fresh.</Description>
-            <Available>InStock</Available>
-            <PromoImages>https://example.org/images/fridge_front.png</PromoImages>
-            <PromoImages>https://example.org/images/fridge_side.png</PromoImages>
-            <PromoImages>https://example.org/images/fridge_open.png</PromoImages>
-          </Item>
         </Cart>
       </Account>
     </EShop>
@@ -42,22 +29,9 @@
       <Account>
         <Login xml:lang="en">BatMan4Ever</Login>
         <Password>AlfredDaButtler</Password>
-        <Shopper>
-          <FirstName xml:lang="en">Bruce</FirstName>
-          <LastName xml:lang="en">Wayne</LastName>
-        </Shopper>
         <Cart>
           <ItemCount>1</ItemCount>
           <TotalPrice>50.49</TotalPrice>
-          <Item>
-            <Name xml:lang="en">Bat-Protein</Name>
-            <Price>50.49</Price>
-            <Description xml:lang="en">Keep out of reach of penguins.</Description>
-            <Available>OutOfStock</Available>
-            <PromoImages>https://example.org/images/protein_top.png</PromoImages>
-            <PromoImages>https://example.org/images/protein_side.png</PromoImages>
-            <PromoImages>https://example.org/images/protein_inside.png</PromoImages>
-          </Item>
         </Cart>
       </Account>
     </EShop>
@@ -73,25 +47,12 @@
       <Account>
         <Login xml:lang="en">SuperLoser</Login>
         <Password>1a1a1A</Password>
-        <Shopper>
-          <FirstName xml:lang="en">Lex</FirstName>
-          <LastName xml:lang="en">Luthor</LastName>
-        </Shopper>
         <Cart>
           <ItemCount>1</ItemCount>
           <TotalPrice>10024.99</TotalPrice>
-          <Item>
-            <Name xml:lang="en">SuperVan</Name>
-            <Price>10024.99</Price>
-            <Description xml:lang="en">Made on Earth by humans.</Description>
-            <Available>PreOrder</Available>
-            <PromoImages>https://example.org/images/van_front.png</PromoImages>
-            <PromoImages>https://example.org/images/van_back.png</PromoImages>
-            <PromoImages>https://example.org/images/van_leather_seats.png</PromoImages>
-          </Item>
         </Cart>
       </Account>
     </EShop>
   </Owner>
 
-</EshopHierarchy>
+</EShopHierarchy>

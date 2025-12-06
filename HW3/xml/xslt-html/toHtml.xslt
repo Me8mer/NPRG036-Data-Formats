@@ -4,7 +4,7 @@
 
 	<xsl:output method="html" indent="yes"/>
 
-	<xsl:template match="/EshopHierarchy">
+	<xsl:template match="/EShopHierarchy">
 		<html>
 			<head>
 				<title>E-Shop Overview</title>
@@ -51,18 +51,6 @@
 		<div class="cart">
 			<p>Items: <xsl:value-of select="ItemCount"/></p>
 			<p>Total Price: <xsl:value-of select="TotalPrice"/></p>
-			<ul>
-				<xsl:for-each select="Item">
-					<li>
-						<xsl:value-of select="Name"/> — $<xsl:value-of select="Price"/>
-						<p>Description: <xsl:value-of select="Description"/></p>
-						<p>Availability: <xsl:value-of select="Available"/></p>
-						<xsl:for-each select="PromoImages">
-							<li><a href="{.}"> <xsl:value-of select="."/></a></li>
-						</xsl:for-each>
-					</li>
-				</xsl:for-each>
-			</ul>
 		</div>
 	</xsl:template>
 

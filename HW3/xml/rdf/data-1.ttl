@@ -19,22 +19,9 @@ ex:Account1 a ex:Account ;
   foaf:accountName "Boyoyoyle"@en;
   ex:password "nothing2c" .
 
-ex:Shopper1 a ex:Shopper ;
-  foaf:givenName "Ferris"@en ;
-  foaf:familyName "Boyle"@en .
-
 ex:Cart1 a ex:Cart ;
   schema:numberOfItems "1"^^xsd:integer ;
   schema:price "999.99"^^xsd:double .
-
-ex:Item1 a ex:Item ;
-  foaf:name "Cold Cold Fridge"@en ;
-  schema:price "999.99"^^xsd:decimal ;
-  dcterms:description "Perfect to keep your vegetables fresh."@en ;
-  schema:availability <InStock> ;
-  schema:image <https://example.org/images/fridge_front.png> ;
-  schema:image <https://example.org/images/fridge_side.png> ;
-  schema:image <https://example.org/images/fridge_open.png> .
 
 ex:Owner2 a ex:Owner ;
   foaf:name "Wayne Enterprises"@en ;
@@ -49,22 +36,9 @@ ex:Account2 a ex:Account ;
   foaf:accountName "BatMan4Ever"@en;
   ex:password "AlfredDaButtler" .
 
-ex:Shopper2 a ex:Shopper ;
-  foaf:givenName "Bruce"@en ;
-  foaf:familyName "Wayne"@en .
-
 ex:Cart2 a ex:Cart ;
   schema:numberOfItems "1"^^xsd:integer ;
   schema:price "50.49"^^xsd:double .
-
-ex:Item2 a ex:Item ;
-  foaf:name "Bat-Protein"@en ;
-  schema:price "50.49"^^xsd:decimal ;
-  dcterms:description "Keep out of reach of penguins."@en ;
-  schema:availability <OutOfStock> ;
-  schema:image <https://example.org/images/protein_top.png> ;
-  schema:image <https://example.org/images/protein_side.png> ;
-  schema:image <https://example.org/images/protein_inside.png> .
 
 ex:Owner3 a ex:Owner ;
   foaf:name "Lex Crop"@en ;
@@ -79,19 +53,6 @@ ex:Account3 a ex:Account ;
   foaf:accountName "SuperLoser"@en;
   ex:password "1a1a1A" .
 
-ex:Shopper3 a ex:Shopper ;
-  foaf:givenName "Lex"@en ;
-  foaf:familyName "Luthor"@en .
-
 ex:Cart3 a ex:Cart ;
   schema:numberOfItems "1"^^xsd:integer ;
   schema:price "10024.99"^^xsd:double .
-
-ex:Item3 a ex:Item ;
-  foaf:name "SuperVan"@en ;
-  schema:price "10024.99"^^xsd:decimal ;
-  dcterms:description "Made on Earth by humans."@en ;
-  schema:availability <PreOrder> ;
-  schema:image <https://example.org/images/van_front.png> ;
-  schema:image <https://example.org/images/van_back.png> ;
-  schema:image <https://example.org/images/van_leather_seats.png> .
