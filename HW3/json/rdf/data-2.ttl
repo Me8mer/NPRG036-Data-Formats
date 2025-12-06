@@ -1,5 +1,68 @@
-@prefix ns0: <http://example.org/vocabulary/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns0: <https://schema.org/> .
+@prefix ns1: <http://example.org/vocabulary/> .
 
-<http://example.org/vocabulary/Shop1> ns0:provides ns0:Shop1Item .
-ns0:Shop2 ns0:provides ns0:Shop2Item .
-ns0:Shop3 ns0:provides ns0:Shop3Item .
+<http://example.org/vocabulary/Shop1Item>
+  a <http://example.org/vocabulary/Item> ;
+  dc:description "Perfect to keep your vegetables fresh."^^xsd:string ;
+  foaf:name "Cold Cold Fridge"@en ;
+  ns0:availability ns0:InStock ;
+  ns0:image <https://example.org/images/fridge_front.png>, <https://example.org/images/fridge_side.png>, <https://example.org/images/fridge_open.png> ;
+  ns0:price 9.999900e+2 .
+
+<http://example.org/vocabulary/Shop1Cart>
+  ns1:contains ns1:Shop1Item ;
+  a ns1:Cart ;
+  ns0:numberOfItems 1 ;
+  ns0:price 9.999900e+2 .
+
+ns1:Shop1
+  ns1:provides ns1:Shop1Item ;
+  a ns1:EShop ;
+  foaf:name "Goth Fridges"@en ;
+  ns0:image <https://example.org/images/fridge.png> ;
+  ns0:url <https://www.gothcorp.com/shop/fridges> .
+
+ns1:Shop2Item
+  a ns1:Item ;
+  dc:description "Keep out of reach of penguins."^^xsd:string ;
+  foaf:name "Bat-Protein"@en ;
+  ns0:availability ns0:OutOfStock ;
+  ns0:image <https://example.org/images/protein_top.png>, <https://example.org/images/protein_side.png>, <https://example.org/images/protein_inside.png> ;
+  ns0:price 5.049000e+1 .
+
+ns1:Shop2Cart
+  ns1:contains ns1:Shop2Item ;
+  a ns1:Cart ;
+  ns0:numberOfItems 1 ;
+  ns0:price 5.049000e+1 .
+
+ns1:Shop2
+  ns1:provides ns1:Shop2Item ;
+  a ns1:EShop ;
+  foaf:name "Wayne's Gains"@en ;
+  ns0:image <https://example.org/images/protein.png> ;
+  ns0:url <https://www.waynesgains.com> .
+
+ns1:Shop3Item
+  a ns1:Item ;
+  dc:description "Made on Earth by humans."^^xsd:string ;
+  foaf:name "SuperVan"@en ;
+  ns0:availability ns0:PreOrder ;
+  ns0:image <https://example.org/images/van_front.png>, <https://example.org/images/van_back.png>, <https://example.org/images/van_leather_seats.png> ;
+  ns0:price 1.002499e+4 .
+
+ns1:Shop3Cart
+  ns1:contains ns1:Shop3Item ;
+  a ns1:Cart ;
+  ns0:numberOfItems 1 ;
+  ns0:price 1.002499e+4 .
+
+ns1:Shop3
+  ns1:provides ns1:Shop3Item ;
+  a ns1:EShop ;
+  foaf:name "Lex Rides"@en ;
+  ns0:image <https://example.org/images/car.png> ;
+  ns0:url <https://www.lexcorp.com/vehicles/shop> .

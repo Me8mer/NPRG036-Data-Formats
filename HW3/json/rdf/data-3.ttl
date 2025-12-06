@@ -1,0 +1,36 @@
+@prefix ns0: <http://example.org/vocabulary/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/vocabulary/Customer1>
+  a <http://example.org/vocabulary/Shopper> ;
+  ns0:owns ns0:Customer1Account ;
+  foaf:familyName "Boyle"@en ;
+  foaf:givenName "Ferris"@en .
+
+ns0:Customer1Account
+  a ns0:Account ;
+  ns0:password "nothing2c"^^xsd:string ;
+  foaf:accountName "Boyoyoyle"@en .
+
+ns0:Customer2
+  a ns0:Shopper ;
+  ns0:owns ns0:Customer2Account ;
+  foaf:familyName "Wayne"@en ;
+  foaf:givenName "Bruce"@en .
+
+ns0:Customer2Account
+  a ns0:Account ;
+  ns0:password "AlfredDaButtler"^^xsd:string ;
+  foaf:accountName "BatMan4Ever"@en .
+
+ns0:Customer3
+  a ns0:Shopper ;
+  ns0:owns ns0:Customer3Account ;
+  foaf:familyName "Luthor"@en ;
+  foaf:givenName "Lex"@en .
+
+ns0:Customer3Account
+  a ns0:Account ;
+  ns0:password "1a1a1A"^^xsd:string ;
+  foaf:accountName "SuperLoser"@en .

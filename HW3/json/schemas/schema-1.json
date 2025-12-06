@@ -87,9 +87,6 @@
                 "Password": {
                     "type": "string"
                 },
-                "Shopper": {
-                    "$ref": "#/$defs/Shopper"
-                },
                 "ProvidesCart": {
                     "$ref": "#/$defs/Cart"
                 }
@@ -100,109 +97,23 @@
                 "@id"
             ]
         },
-        "Shopper": {
-            "type": "object",
-            "properties": {
-                "@id": {
-                    "type": "string",
-                    "format": "uri-reference"
-                },
-                "FirstName": {
-                    "type": "string"
-                },
-                "LastName": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "FirstName",
-                "LastName",
-                "@id"
-            ]
-        },
         "Cart": {
             "type": "object",
-            "properties": {
-                "@id": {
-                    "type": "string",
-                    "format": "uri-reference"
-                },
-                "ItemCount": {
-                    "type": "integer"
-                },
-                "TotalPrice": {
-                    "type": "object",
-                    "properties": {
-                        "@value": {
-                            "type": "string"
-                        },
-                        "@type": {
-                            "const": "xsd:double"
-                        }
-                    },
-                    "required": [
-                        "@value",
-                        "@type"
-                    ]
-                },
-                "ContainsItem": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/Item"
-                    }
-                }
+          "properties": {
+            "@id": {
+              "type": "string",
+              "format": "uri-reference"
             },
+            "ItemCount": {
+              "type": "integer"
+            },
+            "TotalPrice": {
+              "type": "number"
+            }
+          },
             "required": [
                 "ItemCount",
                 "TotalPrice",
-                "@id"
-            ]
-        },
-        "Item": {
-            "type": "object",
-            "properties": {
-                "@id": {
-                    "type": "string",
-                    "format": "uri-reference"
-                },
-                "Name": {
-                    "type": "string"
-                },
-                "Price": {
-                    "type": "object",
-                    "properties": {
-                        "@value": {
-                            "type": "string"
-                        },
-                        "@type": {
-                            "const": "xsd:double"
-                        }
-                    },
-                    "required": [
-                        "@value",
-                        "@type"
-                    ]
-                },
-                "Description": {
-                    "type": "string"
-                },
-                "Availability": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "PromoImages": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "format": "uri"
-                    }
-                }
-            },
-            "required": [
-                "Name",
-                "Price",
-                "Description",
-                "Availability",
                 "@id"
             ]
         }

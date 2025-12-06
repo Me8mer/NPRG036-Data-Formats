@@ -1,232 +1,135 @@
 {
-    "@context": {
-        "ex": "http://example.org/vocabulary/",
-        "foaf": "http://xmlns.com/foaf/0.1/",
-        "schema": "https://schema.org/",
-        "dcterms": "http://purl.org/dc/terms/",
-        "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "Name": {
-            "@id": "foaf:name",
-            "@language": "en"
-        },
-        "CompanyID": "dcterms:identifier",
-        "URL": {
-            "@id": "schema:url",
-            "@type": "@id"
-        },
-        "Icon": {
-            "@id": "schema:image",
-            "@type": "@id"
-        },
-        "Login": "foaf:accountName",
-        "Password": "ex:password",
-        "FirstName": "foaf:givenName",
-        "LastName": "foaf:familyName",
-        "ItemCount": {
-            "@id": "schema:numberOfItems",
-            "@type": "xsd:integer"
-        },
-        "TotalPrice": {
-            "@id": "schema:price",
-            "@type": "xsd:double"
-        },
-        "Description": "dcterms:description",
-        "Price": {
-            "@id": "schema:price",
-            "@type": "xsd:double"
-        },
-        "Availability": {
-            "@id": "schema:availability",
-            "@type": "@id"
-        },
-        "PromoImages": {
-            "@id": "schema:image",
-            "@type": "@id"
-        },
-        "ProvidesAccount": {
-            "@id": "ex:provides",
-            "@type": "@id"
-        },
-        "ProvidesCart": {
-            "@id": "ex:provides",
-            "@type": "@id"
-        },
-        "ContainsItem": {
-            "@id": "ex:contains",
-            "@type": "@id"
-        },
-        "OwnsEshop": {
-            "@id": "ex:owns",
-            "@type": "@id"
-        },
-        "Owner": "@graph",
-        "Shopper": {
-            "@reverse": "ex:owns",
-            "@type": "@id"
-        }
+  "@context": {
+    "ex": "http://example.org/vocabulary/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "type": "@type",
+    "uri": "@id",
+
+    "Name": {
+      "@id": "foaf:name",
+      "@language": "en"
     },
-    "Owner": [
+    "CompanyID": "dcterms:identifier",
+    "URL": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "Icon": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "Login": "foaf:accountName",
+    "Password": "ex:password",
+    "ItemCount": {
+      "@id": "schema:numberOfItems",
+      "@type": "xsd:integer"
+    },
+    "TotalPrice": {
+      "@id": "schema:price",
+      "@type": "xsd:double"
+    },
+
+    "OwnsEshop": {
+      "@id": "ex:owns",
+      "@type": "@id"
+    },
+    "ProvidesAccount": {
+      "@id": "ex:provides",
+      "@type": "@id"
+    },
+    "ProvidesCart": {
+      "@id": "ex:provides",
+      "@type": "@id"
+    },
+
+    "Owner": "@graph"
+  },
+
+  "Owner": [
+    {
+      "uri": "ex:Corp1",
+      "type": "ex:Owner",
+      "Name": "Goth Corp",
+      "CompanyID": "FR33Z3",
+      "OwnsEshop": [
         {
-            "@id": "ex:Corp1",
-            "@type": "ex:Owner",
-            "Name": "Goth Corp",
-            "CompanyID": "FR33Z3",
-            "OwnsEshop": [
-                {
-                    "@id": "ex:Shop1",
-                    "@type": "ex:EShop",
-                    "Name": "Goth Fridges",
-                    "URL": "https://www.gothcorp.com/shop/fridges",
-                    "Icon": "https://example.org/images/fridge.png",
-                    "ProvidesAccount": {
-                        "@id": "ex:Customer1Account",
-                        "@type": "ex:Account",
-                        "Login": "Boyoyoyle",
-                        "Password": "nothing2c",
-                        "Shopper": {
-                            "@id": "ex:Customer1",
-                            "@type": "ex:Shopper",
-                            "FirstName": "Ferris",
-                            "LastName": "Boyle"
-                        },
-                        "ProvidesCart": {
-                            "@id": "ex:Shop1Cart",
-                            "@type": "ex:Cart",
-                            "ItemCount": 1,
-                            "TotalPrice": {
-                                "@value": "999.99",
-                                "@type": "xsd:double"
-                            },
-                            "ContainsItem": [
-                                {
-                                    "@id": "ex:Shop1Item",
-                                    "@type": "ex:Item",
-                                    "Name": "Cold Cold Fridge",
-                                    "Price": {
-                                        "@value": "999.99",
-                                        "@type": "xsd:double"
-                                    },
-                                    "Description": "Perfect to keep your vegetables fresh.",
-                                    "Availability": "https://schema.org/InStock",
-                                    "PromoImages": [
-                                        "https://example.org/images/fridge_front.png",
-                                        "https://example.org/images/fridge_side.png",
-                                        "https://example.org/images/fridge_open.png"
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "@id": "ex:Corp2",
-            "@type": "ex:Owner",
-            "Name": "Wayne Enterprises",
-            "CompanyID": "8UTTL3R",
-            "OwnsEshop": [
-                {
-                    "@id": "ex:Shop2",
-                    "@type": "ex:EShop",
-                    "Name": "Wayne's Gains",
-                    "URL": "https://www.waynesgains.com",
-                    "Icon": "https://example.org/images/protein.png",
-                    "ProvidesAccount": {
-                        "@id": "ex:Customer2Account",
-                        "@type": "ex:Account",
-                        "Login": "BatMan4Ever",
-                        "Password": "AlfredDaButtler",
-                        "Shopper": {
-                            "@id": "ex:Customer2",
-                            "@type": "ex:Shopper",
-                            "FirstName": "Bruce",
-                            "LastName": "Wayne"
-                        },
-                        "ProvidesCart": {
-                            "@id": "ex:Shop2Cart",
-                            "@type": "ex:Cart",
-                            "ItemCount": 1,
-                            "TotalPrice": {
-                                "@value": "50.49",
-                                "@type": "xsd:double"
-                            },
-                            "ContainsItem": [
-                                {
-                                    "@id": "ex:Shop2Item",
-                                    "@type": "ex:Item",
-                                    "Name": "Bat-Protein",
-                                    "Price": {
-                                        "@value": "50.49",
-                                        "@type": "xsd:double"
-                                    },
-                                    "Description": "Keep out of reach of penguins.",
-                                    "Availability": "https://schema.org/OutOfStock",
-                                    "PromoImages": [
-                                        "https://example.org/images/protein_top.png",
-                                        "https://example.org/images/protein_side.png",
-                                        "https://example.org/images/protein_inside.png"
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "@id": "ex:Corp3",
-            "@type": "ex:Owner",
-            "Name": "Lex Crop",
-            "CompanyID": "HAT3R_1",
-            "OwnsEshop": [
-                {
-                    "@id": "ex:Shop3",
-                    "@type": "ex:EShop",
-                    "Name": "Lex Rides",
-                    "URL": "https://www.lexcorp.com/vehicles/shop",
-                    "Icon": "https://example.org/images/car.png",
-                    "ProvidesAccount": {
-                        "@id": "ex:Customer3Account",
-                        "@type": "ex:Account",
-                        "Login": "SuperLoser",
-                        "Password": "1a1a1A",
-                        "Shopper": {
-                            "@id": "ex:Customer3",
-                            "@type": "ex:Shopper",
-                            "FirstName": "Lex",
-                            "LastName": "Luthor"
-                        },
-                        "ProvidesCart": {
-                            "@id": "ex:Shop3Cart",
-                            "@type": "ex:Cart",
-                            "ItemCount": 1,
-                            "TotalPrice": {
-                                "@value": "10024.99",
-                                "@type": "xsd:double"
-                            },
-                            "ContainsItem": [
-                                {
-                                    "@id": "ex:Shop3Item",
-                                    "@type": "ex:Item",
-                                    "Name": "SuperVan",
-                                    "Price": {
-                                        "@value": "10024.99",
-                                        "@type": "xsd:double"
-                                    },
-                                    "Description": "Made on Earth by humans.",
-                                    "Availability": "https://schema.org/PreOrder",
-                                    "PromoImages": [
-                                        "https://example.org/images/van_front.png",
-                                        "https://example.org/images/van_back.png",
-                                        "https://example.org/images/van_leather_seats.png"
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
+          "uri": "ex:Shop1",
+          "type": "ex:EShop",
+          "Name": "Goth Fridges",
+          "URL": "https://www.gothcorp.com/shop/fridges",
+          "Icon": "https://example.org/images/fridge.png",
+          "ProvidesAccount": {
+            "uri": "ex:Customer1Account",
+            "type": "ex:Account",
+            "Login": "Boyoyoyle",
+            "Password": "nothing2c",
+            "ProvidesCart": {
+              "uri": "ex:Shop1Cart",
+              "type": "ex:Cart",
+              "ItemCount": 1,
+              "TotalPrice": 999.99
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "uri": "ex:Corp2",
+      "type": "ex:Owner",
+      "Name": "Wayne Enterprises",
+      "CompanyID": "8UTTL3R",
+      "OwnsEshop": [
+        {
+          "uri": "ex:Shop2",
+          "type": "ex:EShop",
+          "Name": "Wayne's Gains",
+          "URL": "https://www.waynesgains.com",
+          "Icon": "https://example.org/images/protein.png",
+          "ProvidesAccount": {
+            "uri": "ex:Customer2Account",
+            "type": "ex:Account",
+            "Login": "BatMan4Ever",
+            "Password": "AlfredDaButtler",
+            "ProvidesCart": {
+              "uri": "ex:Shop2Cart",
+              "type": "ex:Cart",
+              "ItemCount": 1,
+              "TotalPrice": 50.49
+            }
+          }
+        }
+      ]
+    },
+    {
+      "uri": "ex:Corp3",
+      "type": "ex:Owner",
+      "Name": "Lex Crop",
+      "CompanyID": "HAT3R_1",
+      "OwnsEshop": [
+        {
+          "uri": "ex:Shop3",
+          "type": "ex:EShop",
+          "Name": "Lex Rides",
+          "URL": "https://www.lexcorp.com/vehicles/shop",
+          "Icon": "https://example.org/images/car.png",
+          "ProvidesAccount": {
+            "uri": "ex:Customer3Account",
+            "type": "ex:Account",
+            "Login": "SuperLoser",
+            "Password": "1a1a1A",
+            "ProvidesCart": {
+              "uri": "ex:Shop3Cart",
+              "type": "ex:Cart",
+              "ItemCount": 1,
+              "TotalPrice": 10024.99
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -1,54 +1,114 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://example.org/schemas/online-shop-hierarchy-2.json",
-    "title": "Online Shop hierarchy model 2",
-    "type": "object",
-    "properties": {
-        "@id": {
-            "type": "string",
-            "format": "uri-reference"
-        },
-        "EShop": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/EShop"
-            }
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/online-shop-hierarchy2.json",
+  "title": "Online Shop hierarchy 2",
+  "type": "object",
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri-reference"
     },
-    "required": [
-        "EShop"
-    ],
-    "$defs": {
-        "EShop": {
-            "type": "object",
-            "properties": {
-                "@id": {
-                    "type": "string",
-                    "format": "uri-reference"
-                },
-                "ProvidesItem": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/ItemRef"
-                    }
-                }
-            },
-            "required": [
-                "@id",
-                "ProvidesItem"
-            ]
-        },
-        "ItemRef": {
-            "type": "object",
-            "properties": {
-                "@id": {
-                    "type": "string",
-                    "format": "uri-reference"
-                }
-            },
-            "required": [
-                "@id"
-            ]
-        }
+    "Item": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Item"
+      }
     }
+  },
+  "required": [
+    "Item"
+  ],
+  "$defs": {
+    "Item": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Price": {
+          "type": "number"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Availability": {
+          "type": "string",
+          "format": "uri"
+        },
+        "PromoImages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "Eshop": {
+          "$ref": "#/$defs/EShop"
+        },
+        "Cart": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Cart"
+          }
+        }
+      },
+      "required": [
+        "Name",
+        "Price",
+        "Description",
+        "Availability",
+        "@id"
+      ]
+    },
+    "EShop": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "URL": {
+          "type": "string",
+          "format": "uri"
+        },
+        "Icon": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "Name",
+        "URL",
+        "Icon",
+        "@id"
+      ]
+    },
+    "Cart": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "ItemCount": {
+          "type": "integer"
+        },
+        "TotalPrice": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "ItemCount",
+        "TotalPrice",
+        "@id"
+      ]
+    }
+  }
 }

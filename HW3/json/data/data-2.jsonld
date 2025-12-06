@@ -1,36 +1,146 @@
 {
-    "@context": {
-        "ex": "http://example.org/vocabulary/",
-        "EShop": "@graph",
-        "ProvidesItem": {
-            "@id": "ex:provides",
-            "@type": "@id"
-        }
+  "@context": {
+    "ex": "http://example.org/vocabulary/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "type": "@type",
+    "uri": "@id",
+
+    "Name": {
+      "@id": "foaf:name",
+      "@language": "en"
     },
-    "EShop": [
+    "Description": "dcterms:description",
+    "Price": {
+      "@id": "schema:price",
+      "@type": "xsd:double"
+    },
+    "Availability": {
+      "@id": "schema:availability",
+      "@type": "@id"
+    },
+    "PromoImages": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+
+    "URL": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "Icon": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+
+    "ItemCount": {
+      "@id": "schema:numberOfItems",
+      "@type": "xsd:integer"
+    },
+    "TotalPrice": {
+      "@id": "schema:price",
+      "@type": "xsd:double"
+    },
+
+    "Eshop": {
+      "@reverse": "ex:provides",
+      "@type": "@id"
+    },
+    "Cart": {
+      "@reverse": "ex:contains",
+      "@type": "@id"
+    },
+
+    "Item": "@graph"
+  },
+
+  "Item": [
+    {
+      "uri": "ex:Shop1Item",
+      "type": "ex:Item",
+      "Name": "Cold Cold Fridge",
+      "Price": 999.99,
+      "Description": "Perfect to keep your vegetables fresh.",
+      "Availability": "https://schema.org/InStock",
+      "PromoImages": [
+        "https://example.org/images/fridge_front.png",
+        "https://example.org/images/fridge_side.png",
+        "https://example.org/images/fridge_open.png"
+      ],
+      "Eshop": {
+        "uri": "ex:Shop1",
+        "type": "ex:EShop",
+        "Name": "Goth Fridges",
+        "URL": "https://www.gothcorp.com/shop/fridges",
+        "Icon": "https://example.org/images/fridge.png"
+      },
+      "Cart": [
         {
-            "@id": "ex:Shop1",
-            "ProvidesItem": [
-                {
-                    "@id": "ex:Shop1Item"
-                }
-            ]
-        },
-        {
-            "@id": "ex:Shop2",
-            "ProvidesItem": [
-                {
-                    "@id": "ex:Shop2Item"
-                }
-            ]
-        },
-        {
-            "@id": "ex:Shop3",
-            "ProvidesItem": [
-                {
-                    "@id": "ex:Shop3Item"
-                }
-            ]
+          "uri": "ex:Shop1Cart",
+          "type": "ex:Cart",
+          "ItemCount": 1,
+          "TotalPrice": 999.99
         }
-    ]
+      ]
+    },
+    {
+      "uri": "ex:Shop2Item",
+      "type": "ex:Item",
+      "Name": "Bat-Protein",
+      "Price": 50.49,
+      "Description": "Keep out of reach of penguins.",
+      "Availability": "https://schema.org/OutOfStock",
+      "PromoImages": [
+        "https://example.org/images/protein_top.png",
+        "https://example.org/images/protein_side.png",
+        "https://example.org/images/protein_inside.png"
+      ],
+      "Eshop": {
+        "uri": "ex:Shop2",
+        "type": "ex:EShop",
+        "Name": "Wayne's Gains",
+        "URL": "https://www.waynesgains.com",
+        "Icon": "https://example.org/images/protein.png"
+      },
+      "Cart": [
+        {
+          "uri": "ex:Shop2Cart",
+          "type": "ex:Cart",
+          "ItemCount": 1,
+          "TotalPrice": 50.49
+        }
+      ]
+    },
+    {
+      "uri": "ex:Shop3Item",
+      "type": "ex:Item",
+      "Name": "SuperVan",
+      "Price": 10024.99,
+      "Description": "Made on Earth by humans.",
+      "Availability": "https://schema.org/PreOrder",
+      "PromoImages": [
+        "https://example.org/images/van_front.png",
+        "https://example.org/images/van_back.png",
+        "https://example.org/images/van_leather_seats.png"
+      ],
+      "Eshop": {
+        "uri": "ex:Shop3",
+        "type": "ex:EShop",
+        "Name": "Lex Rides",
+        "URL": "https://www.lexcorp.com/vehicles/shop",
+        "Icon": "https://example.org/images/car.png"
+      },
+      "Cart": [
+        {
+          "uri": "ex:Shop3Cart",
+          "type": "ex:Cart",
+          "ItemCount": 1,
+          "TotalPrice": 10024.99
+        }
+      ]
+    }
+  ]
 }

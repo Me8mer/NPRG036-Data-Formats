@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/online-shop-hierarchy3.json",
+  "title": "Online Shop hierarchy 3",
+  "type": "object",
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "Shopper": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Shopper"
+      }
+    }
+  },
+  "required": [
+    "Shopper"
+  ],
+  "$defs": {
+    "Shopper": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "OwnsAccount": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Account"
+          }
+        }
+      },
+      "required": [
+        "FirstName",
+        "LastName",
+        "@id"
+      ]
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uri-reference"
+        },
+        "Login": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Login",
+        "Password",
+        "@id"
+      ]
+    }
+  }
+}
