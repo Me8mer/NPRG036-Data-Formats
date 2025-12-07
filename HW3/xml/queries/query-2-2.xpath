@@ -1,0 +1,1 @@
+//EShop[Name = 'Goth Fridges']/ancestor::Item[Available = 'InStock']/Name/text() (: Find the 'Goth Fridges' EShop and list all Items that are in stock :)

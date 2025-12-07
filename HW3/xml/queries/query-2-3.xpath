@@ -1,0 +1,2 @@
+//Item[Price > 1000]/Name/text() | //Item[Price > 1000]/Price/text()
+(: Find the names and prices of items with prices above 1000 :)

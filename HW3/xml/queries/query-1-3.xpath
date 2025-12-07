@@ -1,1 +1,0 @@
-//Item[Available = 'InStock']/ancestor::EShop/Name/text() (: Find all items that are in stock and write the names of the EShop they belong to :)
