@@ -2,15 +2,13 @@
   .Owner[] |
   .OwnsEshop[] | . as $shop |
   .ProvidesAccount | . as $account |
-  .Shopper | . as $customer |
-  $account.ProvidesCart | . as $cart |
+  select($account.ProvidesCart.TotalPrice > 500) |
   {
-    customer: ($customer.FirstName + " " + $customer.LastName),
-    username: $account.Login,
     shop: $shop.Name,
-    cartItems: $cart.ItemCount,
-    cartVal: ($cart.TotalPrice."@value" | tonumber),
+    username: $account.Login,
+    cartValue: $account.ProvidesCart.TotalPrice,
+    itemCount: $account.ProvidesCart.ItemCount
   }
-] | sort_by(.cartVal) | .[]
+] | sort_by(.cartValue) | .[]
 
-# customer details with their cart information
+# carts with value above 500

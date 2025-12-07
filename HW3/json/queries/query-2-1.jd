@@ -1,12 +1,20 @@
 [
-  .EShop[] | . as $shop |
-  .ProvidesItem[] | . as $item |
+  .Item[] | . as $item |
   {
-    shopID: $shop."@id",
-    itemID: $item."@id",
-    relationship: "provides"
+    product: $item.Name,
+    price: $item.Price,
+    shop: $item.Eshop.Name,
+    shopURL: $item.Eshop.URL,
+    availability: (
+      if $item.Availability == "https://schema.org/InStock" then "In Stock"
+      elif $item.Availability == "https://schema.org/OutOfStock" then "Out of Stock"
+      elif $item.Availability == "https://schema.org/PreOrder" then "Pre-Order"
+      else "Unknown"
+      end
+    ),
+    description: $item.Description
   }
-] | .[]
+] | sort_by(.availability) | .[]
 
 
-# shops with their provided items
+# products grouped by availability

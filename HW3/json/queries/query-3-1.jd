@@ -1,0 +1,12 @@
+[
+  .Shopper[] | . as $shopper |
+  .OwnsAccount[] | . as $account |
+  {
+    customer: ($shopper.FirstName + " " + $shopper.LastName),
+    customerID: $shopper.uri,
+    username: $account.Login,
+    accountID: $account.uri
+  }
+] | sort_by(.customer) | .[]
+
+# customers and their login data
