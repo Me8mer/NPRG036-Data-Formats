@@ -284,7 +284,7 @@
                     {
                         "columnReference": "E-ShopID",
                         "reference": {
-                            "resource": "E-Shop.csv",
+                            "resource": "EShop.csv",
                             "columnReference": "E-ShopID"
                         }
                     }
