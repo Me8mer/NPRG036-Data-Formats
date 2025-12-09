@@ -1,0 +1,274 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/csvw",
+        {
+            "ex": "http://example.org/vocabulary/",
+            "foaf": "http://xmlns.com/foaf/0.1/",
+            "schema": "https://schema.org/",
+            "xsd": "http://www.w3.org/2001/XMLSchema#"
+        }
+    ],
+    "tables": [
+        {
+            "url": "Owner.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "CompanyID",
+                        "datatype": "string",
+                        "aboutUrl": "http://example.org/owner/{CompanyID}"
+                    },
+                    {
+                        "name": "Name",
+                        "datatype": "string",
+                        "propertyUrl": "ex:label",
+                        "lang": "en",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "EShop.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "E-ShopID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/eshop/{E-ShopID}"
+                    },
+                    {
+                        "name": "Name",
+                        "datatype": "string",
+                        "propertyUrl": "ex:label",
+                        "lang": "en",
+                        "required": true
+                    },
+                    {
+                        "name": "URL",
+                        "datatype": "string",
+                        "propertyUrl": "schema:url",
+                        "required": true
+                    },
+                    {
+                        "name": "Icon",
+                        "datatype": "string",
+                        "propertyUrl": "schema:image"
+                    },
+                    {
+                        "name": "CompanyID",
+                        "datatype": "string",
+                        "propertyUrl": "ex:owns",
+                        "valueUrl": "http://example.org/owner/{CompanyID}",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Shopper.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "ShopperID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/shopper/{ShopperID}"
+                    },
+                    {
+                        "name": "FirstName",
+                        "datatype": "string",
+                        "propertyUrl": "foaf:givenName",
+                        "lang": "en",
+                        "required": true
+                    },
+                    {
+                        "name": "GivenName",
+                        "datatype": "string",
+                        "propertyUrl": "foaf:familyName",
+                        "lang": "en",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Account.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "AccountID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/account/{AccountID}"
+                    },
+                    {
+                        "name": "Login",
+                        "datatype": "string",
+                        "propertyUrl": "foaf:accountName",
+                        "required": true
+                    },
+                    {
+                        "name": "Password",
+                        "datatype": "string",
+                        "propertyUrl": "ex:password",
+                        "required": true
+                    },
+                    {
+                        "name": "E-ShopID",
+                        "datatype": "integer",
+                        "propertyUrl": "ex:provides",
+                        "valueUrl": "http://example.org/eshop/{E-ShopID}",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Owns.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "PersonID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/shopper/{PersonID}",
+                        "required": true
+                    },
+                    {
+                        "name": "AccountID",
+                        "datatype": "integer",
+                        "propertyUrl": "ex:owns",
+                        "valueUrl": "http://example.org/account/{AccountID}",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Item.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "ItemID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/item/{ItemID}"
+                    },
+                    {
+                        "name": "Name",
+                        "datatype": "string",
+                        "propertyUrl": "ex:label",
+                        "lang": "en",
+                        "required": true
+                    },
+                    {
+                        "name": "Price",
+                        "datatype": "decimal",
+                        "propertyUrl": "schema:price",
+                        "required": true
+                    },
+                    {
+                        "name": "Description",
+                        "datatype": "string",
+                        "propertyUrl": "schema:description",
+                        "lang": "en",
+                        "required": true
+                    },
+                    {
+                        "name": "Available",
+                        "datatype": "boolean",
+                        "propertyUrl": "schema:availability",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "PromoImage.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "PromoImage",
+                        "datatype": "string",
+                        "propertyUrl": "schema:image",
+                        "required": true
+                    },
+                    {
+                        "name": "ItemID",
+                        "datatype": "integer",
+                        "valueUrl": "http://example.org/item/{ItemID}",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Displays.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "E-ShopID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/eshop/{E-ShopID}",
+                        "required": true
+                    },
+                    {
+                        "name": "ItemID",
+                        "datatype": "integer",
+                        "propertyUrl": "ex:provides",
+                        "valueUrl": "http://example.org/item/{ItemID}",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Cart.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "CartID",
+                        "datatype": "integer",
+                        "aboutUrl": "http://example.org/cart/{CartID}"
+                    },
+                    {
+                        "name": "ItemCount",
+                        "datatype": "integer",
+                        "propertyUrl": "ex:itemCount",
+                        "required": true
+                    },
+                    {
+                        "name": "TotalPrice",
+                        "datatype": "decimal",
+                        "propertyUrl": "ex:totalPrice",
+                        "required": true
+                    },
+                    {
+                        "name": "AccountID",
+                        "datatype": "integer",
+                        "valueUrl": "http://example.org/account/{AccountID}",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "url": "Contains.csv",
+            "tableSchema": {
+                "columns": [
+                    {
+                        "name": "CartID",
+                        "datatype": "integer",
+                        "propertyUrl": "ex:contains",
+                        "valueUrl": "http://example.org/cart/{CartID}",
+                        "required": true
+                    },
+                    {
+                        "name": "ItemID",
+                        "datatype": "integer",
+                        "propertyUrl": "ex:contains",
+                        "valueUrl": "http://example.org/item/{ItemID}",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    ]
+}
