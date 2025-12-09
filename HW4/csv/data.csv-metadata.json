@@ -16,7 +16,8 @@
                     {
                         "name": "CompanyID",
                         "datatype": "string",
-                        "aboutUrl": "http://example.org/owner/{CompanyID}"
+                        "aboutUrl": "http://example.org/owner/{CompanyID}",
+                        "required": true
                     },
                     {
                         "name": "Name",
@@ -25,7 +26,8 @@
                         "lang": "en",
                         "required": true
                     }
-                ]
+                ],
+                "primaryKey": "CompanyID"
             }
         },
         {
@@ -62,6 +64,16 @@
                         "valueUrl": "http://example.org/owner/{CompanyID}",
                         "required": true
                     }
+                ],
+                "primaryKey": "E-ShopID",
+                "foreignKeys": [
+                    {
+                        "columnReference": "CompanyID",
+                        "reference": {
+                            "resource": "Owner.csv",
+                            "columnReference": "CompanyID"
+                        }
+                    }
                 ]
             }
         },
@@ -88,7 +100,8 @@
                         "lang": "en",
                         "required": true
                     }
-                ]
+                ],
+                "primaryKey": "ShopperID"
             }
         },
         {
@@ -119,6 +132,16 @@
                         "valueUrl": "http://example.org/eshop/{E-ShopID}",
                         "required": true
                     }
+                ],
+                "primaryKey": "AccountID",
+                "foreignKeys": [
+                    {
+                        "columnReference": "E-ShopID",
+                        "reference": {
+                            "resource": "E-Shop.csv",
+                            "columnReference": "E-ShopID"
+                        }
+                    }
                 ]
             }
         },
@@ -127,9 +150,9 @@
             "tableSchema": {
                 "columns": [
                     {
-                        "name": "PersonID",
+                        "name": "ShopperID",
                         "datatype": "integer",
-                        "aboutUrl": "http://example.org/shopper/{PersonID}",
+                        "aboutUrl": "http://example.org/shopper/{ShopperID}",
                         "required": true
                     },
                     {
@@ -138,6 +161,23 @@
                         "propertyUrl": "ex:owns",
                         "valueUrl": "http://example.org/account/{AccountID}",
                         "required": true
+                    }
+                ],
+                "primaryKey": "AccountID",
+                "foreignKeys": [
+                    {
+                        "columnReference": "AccountID",
+                        "reference": {
+                            "resource": "Account.csv",
+                            "columnReference": "AccountID"
+                        }
+                    },
+                    {
+                        "columnReference": "ShopperID",
+                        "reference": {
+                            "resource": "Shopper.csv",
+                            "columnReference": "ShopperID"
+                        }
                     }
                 ]
             }
@@ -177,7 +217,8 @@
                         "propertyUrl": "schema:availability",
                         "required": true
                     }
-                ]
+                ],
+                "primaryKey": "ItemID"
             }
         },
         {
@@ -185,9 +226,13 @@
             "tableSchema": {
                 "columns": [
                     {
-                        "name": "PromoImage",
+                        "name": "PromoImageID",
+                        "datatype": "integer"
+                    },
+                    {
+                        "name": "URL",
                         "datatype": "string",
-                        "propertyUrl": "schema:image",
+                        "propertyUrl": "schema:url",
                         "required": true
                     },
                     {
@@ -195,6 +240,16 @@
                         "datatype": "integer",
                         "valueUrl": "http://example.org/item/{ItemID}",
                         "required": true
+                    }
+                ],
+                "primaryKey": "PromoImageID",
+                "foreignKeys": [
+                    {
+                        "columnReference": "ItemID",
+                        "reference": {
+                            "resource": "Item.csv",
+                            "columnReference": "ItemID"
+                        }
                     }
                 ]
             }
@@ -216,12 +271,30 @@
                         "valueUrl": "http://example.org/item/{ItemID}",
                         "required": true
                     }
+                ],
+                "primaryKey": "ItemID",
+                "foreignKeys": [
+                    {
+                        "columnReference": "ItemID",
+                        "reference": {
+                            "resource": "Item.csv",
+                            "columnReference": "ItemID"
+                        }
+                    },
+                    {
+                        "columnReference": "E-ShopID",
+                        "reference": {
+                            "resource": "E-Shop.csv",
+                            "columnReference": "E-ShopID"
+                        }
+                    }
                 ]
             }
         },
         {
             "url": "Cart.csv",
             "tableSchema": {
+                "primaryKey": "CartID",
                 "columns": [
                     {
                         "name": "CartID",
@@ -252,6 +325,7 @@
         {
             "url": "Contains.csv",
             "tableSchema": {
+                "primaryKey": "CartID",
                 "columns": [
                     {
                         "name": "CartID",
