@@ -325,7 +325,6 @@
         {
             "url": "Contains.csv",
             "tableSchema": {
-                "primaryKey": "CartID",
                 "columns": [
                     {
                         "name": "CartID",
