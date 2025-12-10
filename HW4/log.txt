@@ -1,4 +1,4 @@
-Samuel Lipovský - 
-Filip Volný - 
+Samuel Lipovský - Created the conversion of data to rdf.
+Filip Volný - Created the CSVW and the model
 Peter Vidlička - Created CSVs.
 Oleksandr Yatsenko - 
