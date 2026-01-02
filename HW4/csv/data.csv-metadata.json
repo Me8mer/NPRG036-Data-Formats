@@ -71,7 +71,7 @@
                     {
                         "columnReference": "CompanyID",
                         "reference": {
-                            "resource": "Owner.csv",
+                            "resource": "data-1.csv",
                             "columnReference": "CompanyID"
                         }
                     }
@@ -140,7 +140,7 @@
                     {
                         "columnReference": "E_ShopID",
                         "reference": {
-                            "resource": "E-Shop.csv",
+                            "resource": "data-2.csv",
                             "columnReference": "E_ShopID"
                         }
                     }
@@ -168,14 +168,14 @@
                     {
                         "columnReference": "AccountID",
                         "reference": {
-                            "resource": "Account.csv",
+                            "resource": "data-4.csv",
                             "columnReference": "AccountID"
                         }
                     },
                     {
                         "columnReference": "ShopperID",
                         "reference": {
-                            "resource": "Shopper.csv",
+                            "resource": "data-3.csv",
                             "columnReference": "ShopperID"
                         }
                     }
@@ -246,7 +246,7 @@
                     {
                         "columnReference": "ItemID",
                         "reference": {
-                            "resource": "Item.csv",
+                            "resource": "data-6.csv",
                             "columnReference": "ItemID"
                         }
                     }
@@ -274,14 +274,14 @@
                     {
                         "columnReference": "ItemID",
                         "reference": {
-                            "resource": "Item.csv",
+                            "resource": "data-6.csv",
                             "columnReference": "ItemID"
                         }
                     },
                     {
                         "columnReference": "E_ShopID",
                         "reference": {
-                            "resource": "E-Shop.csv",
+                            "resource": "data-2.csv",
                             "columnReference": "E_ShopID"
                         }
                     }
