@@ -34,11 +34,11 @@
         {
             "url": "data-2.csv",
             "tableSchema": {
-                "aboutUrl": "http://example.org/vocabulary/Shop{E-ShopID}",
+                "aboutUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
                 "class": "http://example.org/vocabulary/EShop",
                 "columns": [
                     {
-                        "name": "E-ShopID",
+                        "name": "E_ShopID",
                         "datatype": "integer"
                     },
                     {
@@ -66,7 +66,7 @@
                         "required": true
                     }
                 ],
-                "primaryKey": "E-ShopID",
+                "primaryKey": "E_ShopID",
                 "foreignKeys": [
                     {
                         "columnReference": "CompanyID",
@@ -129,7 +129,7 @@
                         "required": true
                     },
                     {
-                        "name": "E-ShopID",
+                        "name": "E_ShopID",
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/provides",
                         "required": true
@@ -138,10 +138,10 @@
                 "primaryKey": "AccountID",
                 "foreignKeys": [
                     {
-                        "columnReference": "E-ShopID",
+                        "columnReference": "E_ShopID",
                         "reference": {
                             "resource": "E-Shop.csv",
-                            "columnReference": "E-ShopID"
+                            "columnReference": "E_ShopID"
                         }
                     }
                 ]
@@ -258,7 +258,7 @@
             "tableSchema": {
                 "columns": [
                     {
-                        "name": "E-ShopID",
+                        "name": "E_ShopID",
                         "datatype": "integer",
                         "required": true
                     },
@@ -279,10 +279,10 @@
                         }
                     },
                     {
-                        "columnReference": "E-ShopID",
+                        "columnReference": "E_ShopID",
                         "reference": {
                             "resource": "E-Shop.csv",
-                            "columnReference": "E-ShopID"
+                            "columnReference": "E_ShopID"
                         }
                     }
                 ]
