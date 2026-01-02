@@ -8,13 +8,13 @@
                     {
                         "name": "CompanyID",
                         "datatype": "string",
-                        "aboutUrl": "http://example.org/owner/{CompanyID}",
+                        "propertyUrl": "dcterms:idenntifier",
                         "required": true
                     },
                     {
                         "name": "Name",
                         "datatype": "string",
-                        "propertyUrl": "ex:label",
+                        "propertyUrl": "foaf:name",
                         "lang": "en",
                         "required": true
                     }
@@ -28,13 +28,12 @@
                 "columns": [
                     {
                         "name": "E_ShopID",
-                        "datatype": "integer",
-                        "aboutUrl": "http://example.org/eshop/{E_ShopID}"
+                        "datatype": "integer"
                     },
                     {
                         "name": "Name",
                         "datatype": "string",
-                        "propertyUrl": "ex:label",
+                        "propertyUrl": "foaf:name",
                         "lang": "en",
                         "required": true
                     },
@@ -53,7 +52,6 @@
                         "name": "CompanyID",
                         "datatype": "string",
                         "propertyUrl": "ex:owns",
-                        "valueUrl": "http://example.org/owner/{CompanyID}",
                         "required": true
                     }
                 ],
@@ -62,7 +60,7 @@
                     {
                         "columnReference": "CompanyID",
                         "reference": {
-                            "resource": "data-1.csv",
+                            "resource": "Owner.csv",
                             "columnReference": "CompanyID"
                         }
                     }
@@ -75,8 +73,7 @@
                 "columns": [
                     {
                         "name": "ShopperID",
-                        "datatype": "integer",
-                        "aboutUrl": "http://example.org/shopper/{ShopperID}"
+                        "datatype": "integer"
                     },
                     {
                         "name": "FirstName",
@@ -102,8 +99,7 @@
                 "columns": [
                     {
                         "name": "AccountID",
-                        "datatype": "integer",
-                        "aboutUrl": "http://example.org/account/{AccountID}"
+                        "datatype": "integer"
                     },
                     {
                         "name": "Login",
@@ -121,7 +117,6 @@
                         "name": "E_ShopID",
                         "datatype": "integer",
                         "propertyUrl": "ex:provides",
-                        "valueUrl": "http://example.org/eshop/{E_ShopID}",
                         "required": true
                     }
                 ],
@@ -130,7 +125,7 @@
                     {
                         "columnReference": "E_ShopID",
                         "reference": {
-                            "resource": "data-2.csv",
+                            "resource": "E-Shop.csv",
                             "columnReference": "E_ShopID"
                         }
                     }
@@ -144,14 +139,12 @@
                     {
                         "name": "ShopperID",
                         "datatype": "integer",
-                        "aboutUrl": "http://example.org/shopper/{ShopperID}",
                         "required": true
                     },
                     {
                         "name": "AccountID",
                         "datatype": "integer",
                         "propertyUrl": "ex:owns",
-                        "valueUrl": "http://example.org/account/{AccountID}",
                         "required": true
                     }
                 ],
@@ -160,14 +153,14 @@
                     {
                         "columnReference": "AccountID",
                         "reference": {
-                            "resource": "data-4.csv",
+                            "resource": "Account.csv",
                             "columnReference": "AccountID"
                         }
                     },
                     {
                         "columnReference": "ShopperID",
                         "reference": {
-                            "resource": "data-3.csv",
+                            "resource": "Shopper.csv",
                             "columnReference": "ShopperID"
                         }
                     }
@@ -180,32 +173,31 @@
                 "columns": [
                     {
                         "name": "ItemID",
-                        "datatype": "integer",
-                        "aboutUrl": "http://example.org/item/{ItemID}"
+                        "datatype": "integer"
                     },
                     {
                         "name": "Name",
                         "datatype": "string",
-                        "propertyUrl": "ex:label",
+                        "propertyUrl": "foaf:name",
                         "lang": "en",
                         "required": true
                     },
                     {
                         "name": "Price",
-                        "datatype": "decimal",
+                        "datatype": "double",
                         "propertyUrl": "schema:price",
                         "required": true
                     },
                     {
                         "name": "Description",
                         "datatype": "string",
-                        "propertyUrl": "schema:description",
+                        "propertyUrl": "dcterms:description",
                         "lang": "en",
                         "required": true
                     },
                     {
                         "name": "Available",
-                        "datatype": "boolean",
+                        "datatype": "string",
                         "propertyUrl": "schema:availability",
                         "required": true
                     }
@@ -224,13 +216,11 @@
                     {
                         "name": "URL",
                         "datatype": "string",
-                        "propertyUrl": "schema:url",
                         "required": true
                     },
                     {
                         "name": "ItemID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/item/{ItemID}",
                         "required": true
                     }
                 ],
@@ -239,7 +229,7 @@
                     {
                         "columnReference": "ItemID",
                         "reference": {
-                            "resource": "data-6.csv",
+                            "resource": "Item.csv",
                             "columnReference": "ItemID"
                         }
                     }
@@ -253,14 +243,12 @@
                     {
                         "name": "E_ShopID",
                         "datatype": "integer",
-                        "aboutUrl": "http://example.org/eshop/{E_ShopID}",
                         "required": true
                     },
                     {
                         "name": "ItemID",
                         "datatype": "integer",
                         "propertyUrl": "ex:provides",
-                        "valueUrl": "http://example.org/item/{ItemID}",
                         "required": true
                     }
                 ],
@@ -269,14 +257,14 @@
                     {
                         "columnReference": "ItemID",
                         "reference": {
-                            "resource": "data-6.csv",
+                            "resource": "Item.csv",
                             "columnReference": "ItemID"
                         }
                     },
                     {
                         "columnReference": "E_ShopID",
                         "reference": {
-                            "resource": "data-2.csv",
+                            "resource": "E-Shop.csv",
                             "columnReference": "E_ShopID"
                         }
                     }
@@ -290,8 +278,7 @@
                 "columns": [
                     {
                         "name": "CartID",
-                        "datatype": "integer",
-                        "aboutUrl": "http://example.org/cart/{CartID}"
+                        "datatype": "integer"
                     },
                     {
                         "name": "ItemCount",
@@ -308,7 +295,6 @@
                     {
                         "name": "AccountID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/account/{AccountID}",
                         "required": true
                     }
                 ]
@@ -322,14 +308,12 @@
                         "name": "CartID",
                         "datatype": "integer",
                         "propertyUrl": "ex:contains",
-                        "valueUrl": "http://example.org/cart/{CartID}",
                         "required": true
                     },
                     {
                         "name": "ItemID",
                         "datatype": "integer",
                         "propertyUrl": "ex:contains",
-                        "valueUrl": "http://example.org/item/{ItemID}",
                         "required": true
                     }
                 ]

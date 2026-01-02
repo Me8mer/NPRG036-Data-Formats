@@ -5,7 +5,7 @@ require 'csv'
 require 'uri'
 
 # Load CSVW metadata
-metadata_file = File.expand_path("../csv/data.csv-metadata.json", __dir__)
+metadata_file = File.expand_path("../HW4/csv/data.csv-metadata.json", __dir__)
 metadata = RDF::Tabular::Metadata.open(metadata_file)
 
 graph = RDF::Graph.new
