@@ -1,4 +1,5 @@
 {
+    "@id": "https://example.org/data.csv_metadata.json",
     "@context": [
         "http://www.w3.org/ns/csvw"
     ],
@@ -7,21 +8,25 @@
             "url": "data-1.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Corp{OwnerID}",
-                "propertyUrl": "http://example.org/vocabulary/Owner",
                 "columns": [
                     {
                         "name": "OwnerID",
+                        "titles": "OwnerID",
                         "datatype": "integer",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "http://example.org/vocabulary/Owner",
                         "required": true
                     },
                     {
                         "name": "CompanyID",
+                        "titles": "CompanyID",
                         "datatype": "string",
                         "propertyUrl": "http://purl.org/dc/terms/identifier",
                         "required": true
                     },
                     {
                         "name": "Name",
+                        "titles": "Name",
                         "datatype": "string",
                         "propertyUrl": "http://xmlns.com/foaf/0.1/name",
                         "lang": "en",
@@ -35,14 +40,17 @@
             "url": "data-2.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
-                "propertyUrl": "http://example.org/vocabulary/EShop",
                 "columns": [
                     {
                         "name": "E_ShopID",
+                        "titles": "E_ShopID",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "http://example.org/vocabulary/EShop",
                         "datatype": "integer"
                     },
                     {
                         "name": "Name",
+                        "titles": "Name",
                         "datatype": "string",
                         "propertyUrl": "http://xmlns.com/foaf/0.1/name",
                         "lang": "en",
@@ -50,21 +58,31 @@
                     },
                     {
                         "name": "URL",
-                        "datatype": "string",
+                        "titles": "URL",
+                        "datatype": "anyURI",
                         "propertyUrl": "https://schema.org/url",
                         "required": true
                     },
                     {
                         "name": "Icon",
-                        "datatype": "string",
+                        "titles": "Icon",
+                        "datatype": "anyURI",
                         "propertyUrl": "https://schema.org/image"
                     },
                     {
                         "name": "OwnerID",
+                        "titles": "OwnerID",
                         "datatype": "string",
                         "propertyUrl": "http://example.org/vocabulary/owns",
                         "valueUrl": "http://example.org/vocabulary/Corp{OwnerID}",
+                        "suppressOutput": true,
                         "required": true
+                    },
+                    {
+                        "aboutUrl": "http://example.org/vocabulary/Corp{OwnerID}",
+                        "propertyUrl": "http://example.org/vocabulary/owns",
+                        "valueUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
+                        "virtual": true
                     }
                 ],
                 "primaryKey": "E_ShopID",
@@ -83,14 +101,17 @@
             "url": "data-3.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Customer{ShopperID}",
-                "propertyUrl": "http://example.org/vocabulary/Shopper",
                 "columns": [
                     {
                         "name": "ShopperID",
+                        "titles": "ShopperID",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "http://example.org/vocabulary/Shopper",
                         "datatype": "integer"
                     },
                     {
                         "name": "FirstName",
+                        "titles": "FirstName",
                         "datatype": "string",
                         "propertyUrl": "http://xmlns.com/foaf/0.1/givenName",
                         "lang": "en",
@@ -98,6 +119,7 @@
                     },
                     {
                         "name": "GivenName",
+                        "titles": "GivenName",
                         "datatype": "string",
                         "propertyUrl": "http://xmlns.com/foaf/0.1/familyName",
                         "lang": "en",
@@ -111,30 +133,40 @@
             "url": "data-4.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
-                "propertyUrl": "http://example.org/vocabulary/Account",
                 "columns": [
                     {
                         "name": "AccountID",
+                        "titles": "AccountID",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "http://example.org/vocabulary/Account",
                         "datatype": "integer"
                     },
                     {
                         "name": "Login",
+                        "titles": "Login",
                         "datatype": "string",
                         "propertyUrl": "http://xmlns.com/foaf/0.1/accountName",
                         "required": true
                     },
                     {
                         "name": "Password",
+                        "titles": "Password",
                         "datatype": "string",
                         "propertyUrl": "http://example.org/vocabulary/password",
                         "required": true
                     },
                     {
                         "name": "E_ShopID",
+                        "titles": "E_ShopID",
                         "datatype": "integer",
+                        "required": true,
+                        "suppressOutput": true
+                    },
+                    {
+                        "aboutUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
                         "propertyUrl": "http://example.org/vocabulary/provides",
-                        "valueUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
-                        "required": true
+                        "valueUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
+                        "virtual": true
                     }
                 ],
                 "primaryKey": "AccountID",
@@ -155,16 +187,23 @@
                 "columns": [
                     {
                         "name": "ShopperID",
+                        "titles": "ShopperID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/vocabulary/Customer{ShopperID}",
-                        "required": true
+                        "required": true,
+                        "suppressOutput": true
                     },
                     {
                         "name": "AccountID",
+                        "titles": "AccountID",
                         "datatype": "integer",
-                        "propertyUrl": "http://example.org/vocabulary/owns",
+                        "required": true,
+                        "suppressOutput": true
+                    },
+                    {
                         "valueUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
-                        "required": true
+                        "propertyUrl": "http://example.org/vocabulary/owns",
+                        "aboutUrl": "http://example.org/vocabulary/Customer{ShopperID}",
+                        "virtual": true
                     }
                 ],
                 "primaryKey": "AccountID",
@@ -190,14 +229,17 @@
             "url": "data-6.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
-                "propertyUrl": "http://example.org/vocabulary/Item",
                 "columns": [
                     {
                         "name": "ItemID",
+                        "titles": "ItemID",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "http://example.org/vocabulary/Item",
                         "datatype": "integer"
                     },
                     {
                         "name": "Name",
+                        "titles": "Name",
                         "datatype": "string",
                         "propertyUrl": "http://xmlns.com/foaf/0.1/name",
                         "lang": "en",
@@ -205,12 +247,14 @@
                     },
                     {
                         "name": "Price",
+                        "titles": "Price",
                         "datatype": "double",
                         "propertyUrl": "https://schema.org/price",
                         "required": true
                     },
                     {
                         "name": "Description",
+                        "titles": "Description",
                         "datatype": "string",
                         "propertyUrl": "http://purl.org/dc/terms/description",
                         "lang": "en",
@@ -218,8 +262,10 @@
                     },
                     {
                         "name": "Available",
-                        "datatype": "string",
+                        "titles": "Available",
+                        "datatype": "anyURI",
                         "propertyUrl": "https://schema.org/availability",
+                        "valueUrl": "https://schema.org/{Available}",
                         "required": true
                     }
                 ],
@@ -232,18 +278,30 @@
                 "columns": [
                     {
                         "name": "PromoImageID",
-                        "datatype": "integer"
+                        "titles": "PromoImageID",
+                        "datatype": "integer",
+                        "suppressOutput": true
                     },
                     {
                         "name": "URL",
-                        "datatype": "string",
+                        "titles": "URL",
+                        "datatype": "anyURI",
+                        "suppressOutput": true,
                         "required": true
                     },
                     {
                         "name": "ItemID",
+                        "titles": "ItemID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
+                        "suppressOutput": true,
                         "required": true
+                    },
+                    {
+                        "aboutUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
+                        "propertyUrl": "https://schema.org/image",
+                        "valueUrl": "{URL}",
+                        "datatype": "anyURI",
+                        "virtual": true
                     }
                 ],
                 "primaryKey": "PromoImageID",
@@ -264,16 +322,23 @@
                 "columns": [
                     {
                         "name": "E_ShopID",
+                        "titles": "E_ShopID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
+                        "suppressOutput": true,
                         "required": true
                     },
                     {
                         "name": "ItemID",
+                        "titles": "ItemID",
                         "datatype": "integer",
+                        "suppressOutput": true,
+                        "required": true
+                    },
+                    {
+                        "aboutUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
                         "propertyUrl": "http://example.org/vocabulary/provides",
                         "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
-                        "required": true
+                        "virtual": true
                     }
                 ],
                 "primaryKey": "ItemID",
@@ -299,30 +364,41 @@
             "url": "data-9.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Shop{CartID}Cart",
-                "propertyUrl": "http://example.org/vocabulary/Cart",
                 "primaryKey": "CartID",
                 "columns": [
                     {
                         "name": "CartID",
+                        "titles": "CartID",
+                        "propertyUrl": "rdf:type",
+                        "valueUrl": "http://example.org/vocabulary/Cart",
                         "datatype": "integer"
                     },
                     {
                         "name": "ItemCount",
+                        "titles": "ItemCount",
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/itemCount",
                         "required": true
                     },
                     {
                         "name": "TotalPrice",
-                        "datatype": "decimal",
+                        "titles": "TotalPrice",
+                        "datatype": "double",
                         "propertyUrl": "http://example.org/vocabulary/totalPrice",
                         "required": true
                     },
                     {
                         "name": "AccountID",
+                        "titles": "AccountID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
-                        "required": true
+                        "required": true,
+                        "suppressOutput": true
+                    },
+                    {
+                        "aboutUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
+                        "propertyUrl": "http://example.org/vocabulary/provides",
+                        "valueUrl": "http://example.org/vocabulary/Shop{CartID}Cart",
+                        "virtual": true
                     }
                 ],
                 "foreignKeys": [
@@ -342,16 +418,23 @@
                 "columns": [
                     {
                         "name": "CartID",
+                        "titles": "CartID",
                         "datatype": "integer",
-                        "propertyUrl": "http://example.org/vocabulary/contains",
-                        "valueUrl": "http://example.org/vocabulary/Shop{CartID}Cart",
+                        "suppressOutput": true,
                         "required": true
                     },
                     {
                         "name": "ItemID",
+                        "titles": "ItemID",
                         "datatype": "integer",
-                        "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
+                        "suppressOutput": true,
                         "required": true
+                    },
+                    {
+                        "aboutUrl": "http://example.org/vocabulary/Shop{CartID}Cart",
+                        "propertyUrl": "http://example.org/vocabulary/contains",
+                        "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
+                        "virtual": true
                     }
                 ],
                 "foreignKeys": [
