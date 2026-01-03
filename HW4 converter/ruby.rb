@@ -16,7 +16,7 @@ prefixes = {
   foaf: RDF::URI("http://xmlns.com/foaf/0.1/"),
   schema: RDF::URI("https://schema.org/"),
   dcterms: RDF::URI("http://purl.org/dc/terms/"),
-  xsd: RDF::URI("http://www.w3.org/2001/XMLSchema#")
+  xsd: RDF::XSD.to_uri
 }
 
 def shorten_uri(uri_str, prefixes)
@@ -40,6 +40,8 @@ metadata.tables.each do |table|
              end
 
   CSV.foreach(csv_path, headers: true) do |row|
+    next if table.tableSchema.aboutUrl.nil?
+
     row = row.to_h
 
     id = row.values.first
@@ -51,34 +53,33 @@ metadata.tables.each do |table|
       graph << [subject_uri, RDF.type, class_uri]
     end
 
+    
+
     # --- Add column triples ---
     schema.columns.each do |col|
+      next if col.name == table.tableSchema.primaryKey
+      next if (table.tableSchema.foreignKeys || []).any? { |fk| fk["columnReference"] == col.name }
+
       value = row[col.name]
 
       predicate = RDF::URI(col.propertyUrl)
 
-      object =
-        if col.datatype
-          case col.datatype.to_s.downcase
-          when /integer/
-            RDF::Literal.new(value.to_i, datatype: RDF::XSD.integer)
-          when /decimal/
-            RDF::Literal.new(value.to_f, datatype: RDF::XSD.decimal)
-          when /double/
-            RDF::Literal.new(value.to_f, datatype: RDF::XSD.double)
-          when /boolean/
-            RDF::Literal.new(value == "true", datatype: RDF::XSD.boolean)
-          when /string/
-            col.lang ? RDF::Literal.new(value, language: col.lang.to_sym) : RDF::Literal.new(value, datatype: RDF::XSD.string)
-          else
-            RDF::Literal.new(value)
-          end
-        else
-          RDF::Literal.new(value)
+      object = RDF::Literal.new(value)
+      if col.datatype
+        datatype_uri = col.datatype.is_a?(RDF::Tabular::Datatype) ? col.datatype.base.to_s : col.datatype.to_s
+        if datatype_uri == "integer"
+          object = RDF::Literal.new(value.to_i, datatype: RDF::XSD.integer)
+        elsif datatype_uri == "decimal"
+          object = RDF::Literal.new(value, datatype: RDF::XSD.decimal)
+        elsif datatype_uri == "double"
+          object = RDF::Literal.new(value.to_f, datatype: RDF::XSD.double)
+        elsif datatype_uri == "boolean"
+          object = RDF::Literal.new(value == "true", datatype: RDF::XSD.boolean)
+        elsif datatype_uri == "string"
+          object = col.lang.to_s.strip != "und" ? RDF::Literal.new(value, language: col.lang.to_sym) : RDF::Literal.new(value.to_s, datatype: RDF::XSD.string)
         end
-      
-      unless col.name.end_with?("Key")
-        graph << [subject_uri, predicate, object]
+      end
+      graph << [subject_uri, predicate, object]
     end
   end
 end
