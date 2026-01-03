@@ -1,219 +1,114 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <http://example.org/vocabulary/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:Account a rdfs:Class;
-  rdfs:label "Account"@en;
-  rdfs:comment "An account in an online shop"@en;
-  rdfs:subClassOf foaf:OnlineAccount .
+ex:Corp1 a ex:Owner;
+  ex:owns ex:Shop1;
+  dcterms:identifier "FR33Z3";
+  foaf:name "Goth Corp"@en .
 
-ex:Cart a rdfs:Class;
-  rdfs:label "Cart"@en;
-  rdfs:comment "A collection of items chosen for purchase"@en;
-  rdfs:subClassOf schema:ItemList .
+ex:Corp2 a ex:Owner;
+  ex:owns ex:Shop2;
+  dcterms:identifier "8UTTL3R";
+  foaf:name "Wayne Enterprises"@en .
 
-ex:EShop a rdfs:Class;
-  rdfs:label "E-Shop"@en;
-  rdfs:comment "A website operating as an online shop"@en;
-  rdfs:subClassOf schema:WebSite .
+ex:Corp3 a ex:Owner;
+  ex:owns ex:Shop3;
+  dcterms:identifier "HAT3R_1";
+  foaf:name "Lex Crop"@en .
 
-ex:Item a rdfs:Class;
-  rdfs:label "Item"@en;
-  rdfs:comment "A single item for sale in an online shop"@en;
-  rdfs:subClassOf schema:Product .
+ex:Customer1 a ex:Shopper;
+  ex:owns ex:Customer1Account;
+  foaf:familyName "Boyle"@en;
+  foaf:givenName "Ferris"@en .
 
-ex:Owner a rdfs:Class;
-  rdfs:label "Owner"@en;
-  rdfs:comment "An entity with the ownership over another entity"@en;
-  rdfs:subClassOf foaf:Agent .
+ex:Customer2 a ex:Shopper;
+  ex:owns ex:Customer2Account;
+  foaf:familyName "Wayne"@en;
+  foaf:givenName "Bruce"@en .
 
-ex:Shopper a rdfs:Class;
-  rdfs:label "Shopper"@en;
-  rdfs:comment "A person with an account in an online shop"@en;
-  rdfs:subClassOf foaf:Person .
+ex:Customer3 a ex:Shopper;
+  ex:owns ex:Customer3Account;
+  foaf:familyName "Luthor"@en;
+  foaf:givenName "Lex"@en .
 
-<http://example.org/account/1> ex:AccountID "1" .
+ex:Shop1 a ex:EShop;
+  ex:provides ex:Customer1Account,
+    ex:Shop1Item;
+  foaf:name "Goth Fridges"@en;
+  schema:image "https://example.org/images/fridge.png"^^xsd:anyURI;
+  schema:url "https://www.gothcorp.com/shop/fridges"^^xsd:anyURI .
 
-<http://example.org/account/2> ex:AccountID "2" .
+ex:Shop1Cart a ex:Cart;
+  ex:contains ex:Shop1Item;
+  ex:itemCount 1;
+  ex:totalPrice 9.9999e2 .
 
-<http://example.org/account/3> ex:AccountID "3" .
+ex:Shop2 a ex:EShop;
+  ex:provides ex:Customer2Account,
+    ex:Shop2Item;
+  foaf:name "Wayne's Gains"@en;
+  schema:image "https://example.org/images/protein.png"^^xsd:anyURI;
+  schema:url "https://www.waynesgains.com"^^xsd:anyURI .
 
-<http://example.org/cart/1> ex:CartID "1" .
+ex:Shop2Cart a ex:Cart;
+  ex:contains ex:Shop2Item;
+  ex:itemCount 1;
+  ex:totalPrice 5.049e1 .
 
-<http://example.org/cart/2> ex:CartID "2" .
+ex:Shop3 a ex:EShop;
+  ex:provides ex:Customer3Account,
+    ex:Shop3Item;
+  foaf:name "Lex Rides"@en;
+  schema:image "https://example.org/images/car.png"^^xsd:anyURI;
+  schema:url "https://www.lexcorp.com/vehicles/shop"^^xsd:anyURI .
 
-<http://example.org/cart/3> ex:CartID "3" .
+ex:Shop3Cart a ex:Cart;
+  ex:contains ex:Shop3Item;
+  ex:itemCount 1;
+  ex:totalPrice 1.002499e4 .
 
-<http://example.org/data-1.csv/8UTTL3R> <ex:label> "Wayne Enterprises" .
+ex:Customer1Account a ex:Account;
+  ex:password "nothing2c";
+  ex:provides ex:Shop1Cart;
+  foaf:accountName "Boyoyoyle" .
 
-<http://example.org/data-1.csv/FR33Z3> <ex:label> "Goth Corp" .
+ex:Customer2Account a ex:Account;
+  ex:password "AlfredDaButtler";
+  ex:provides ex:Shop2Cart;
+  foaf:accountName "BatMan4Ever" .
 
-<http://example.org/data-1.csv/HAT3R_1> <ex:label> "Lex Crop" .
+ex:Customer3Account a ex:Account;
+  ex:password "1a1a1A";
+  ex:provides ex:Shop3Cart;
+  foaf:accountName "SuperLoser" .
 
-<http://example.org/data-10.csv/row/-523644751> <ex:contains> "1" .
+ex:Shop1Item a ex:Item;
+  dcterms:description "Perfect to keep your vegetables fresh."@en;
+  foaf:name "Cold Cold Fridge"@en;
+  schema:availability schema:InStock;
+  schema:image <https://example.org/images/fridge_front.png>,
+    <https://example.org/images/fridge_side.png>,
+    <https://example.org/images/fridge_open.png>;
+  schema:price 9.9999e2 .
 
-<http://example.org/data-10.csv/row/562945052> <ex:contains> "2" .
+ex:Shop2Item a ex:Item;
+  dcterms:description "Keep out of reach of penguins."@en;
+  foaf:name "Bat-Protein"@en;
+  schema:availability schema:OutOfStock;
+  schema:image <https://example.org/images/protein_top.png>,
+    <https://example.org/images/protein_side.png>,
+    <https://example.org/images/protein_inside.png>;
+  schema:price 5.049e1 .
 
-<http://example.org/data-10.csv/row/674940575> <ex:contains> "3" .
-
-<http://example.org/data-2.csv/1> <ex:label> "Goth Fridges";
-  <ex:owns> "FR33Z3";
-  <schema:image> "https://example.org/images/fridge.png";
-  <schema:url> "https://www.gothcorp.com/shop/fridges" .
-
-<http://example.org/data-2.csv/2> <ex:label> "Wayne's Gains";
-  <ex:owns> "8UTTL3R";
-  <schema:image> "https://example.org/images/protein.png";
-  <schema:url> "https://www.waynesgains.com" .
-
-<http://example.org/data-2.csv/3> <ex:label> "Lex Rides";
-  <ex:owns> "HAT3R_1";
-  <schema:image> "https://example.org/images/car.png";
-  <schema:url> "https://www.lexcorp.com/vehicles/shop" .
-
-<http://example.org/data-3.csv/1> <foaf:familyName> "Boyle";
-  <foaf:givenName> "Ferris" .
-
-<http://example.org/data-3.csv/2> <foaf:familyName> "Wayne";
-  <foaf:givenName> "Bruce" .
-
-<http://example.org/data-3.csv/3> <foaf:familyName> "Luthor";
-  <foaf:givenName> "Lex" .
-
-<http://example.org/data-4.csv/1> <ex:password> "nothing2c";
-  <ex:provides> "1";
-  <foaf:accountName> "Boyoyoyle" .
-
-<http://example.org/data-4.csv/2> <ex:password> "AlfredDaButtler";
-  <ex:provides> "2";
-  <foaf:accountName> "BatMan4Ever" .
-
-<http://example.org/data-4.csv/3> <ex:password> "1a1a1A";
-  <ex:provides> "3";
-  <foaf:accountName> "SuperLoser" .
-
-<http://example.org/data-5.csv/1> <ex:owns> "1" .
-
-<http://example.org/data-5.csv/2> <ex:owns> "2" .
-
-<http://example.org/data-5.csv/3> <ex:owns> "3" .
-
-<http://example.org/data-6.csv/1> <ex:label> "Cold Cold Fridge";
-  <schema:availability> "true";
-  <schema:description> "Perfect to keep your vegetables fresh.";
-  <schema:price> "999.99" .
-
-<http://example.org/data-6.csv/2> <ex:label> "Bat-Protein";
-  <schema:availability> "false";
-  <schema:description> "Keep out of reach of penguins.";
-  <schema:price> "50.49" .
-
-<http://example.org/data-6.csv/3> <ex:label> "SuperVan";
-  <schema:availability> "false";
-  <schema:description> "Made on Earth by humans.";
-  <schema:price> "10024.99" .
-
-<http://example.org/data-7.csv/1> ex:ItemID "1";
-  ex:PromoImageID "1";
-  <schema:url> "https://example.org/images/fridge_front.png" .
-
-<http://example.org/data-7.csv/2> ex:ItemID "1";
-  ex:PromoImageID "2";
-  <schema:url> "https://example.org/images/fridge_side.png" .
-
-<http://example.org/data-7.csv/3> ex:ItemID "1";
-  ex:PromoImageID "3";
-  <schema:url> "https://example.org/images/fridge_open.png" .
-
-<http://example.org/data-7.csv/4> ex:ItemID "2";
-  ex:PromoImageID "4";
-  <schema:url> "https://example.org/images/protein_top.png" .
-
-<http://example.org/data-7.csv/5> ex:ItemID "2";
-  ex:PromoImageID "5";
-  <schema:url> "https://example.org/images/protein_side.png" .
-
-<http://example.org/data-7.csv/6> ex:ItemID "2";
-  ex:PromoImageID "6";
-  <schema:url> "https://example.org/images/protein_inside.png" .
-
-<http://example.org/data-7.csv/7> ex:ItemID "3";
-  ex:PromoImageID "7";
-  <schema:url> "https://example.org/images/van_front.png" .
-
-<http://example.org/data-7.csv/8> ex:ItemID "3";
-  ex:PromoImageID "8";
-  <schema:url> "https://example.org/images/van_back.png" .
-
-<http://example.org/data-7.csv/9> ex:ItemID "3";
-  ex:PromoImageID "9";
-  <schema:url> "https://example.org/images/van_leather_seats.png" .
-
-<http://example.org/data-8.csv/1> <ex:provides> "1" .
-
-<http://example.org/data-8.csv/2> <ex:provides> "2" .
-
-<http://example.org/data-8.csv/3> <ex:provides> "3" .
-
-<http://example.org/data-9.csv/1> <ex:itemCount> "1";
-  <ex:totalPrice> "999.99";
-  ex:AccountID "1" .
-
-<http://example.org/data-9.csv/2> <ex:itemCount> "1";
-  <ex:totalPrice> "50.49";
-  ex:AccountID "2" .
-
-<http://example.org/data-9.csv/3> <ex:itemCount> "1";
-  <ex:totalPrice> "10024.99";
-  ex:AccountID "3" .
-
-<http://example.org/eshop/1> ex:E_ShopID "1" .
-
-<http://example.org/eshop/2> ex:E_ShopID "2" .
-
-<http://example.org/eshop/3> ex:E_ShopID "3" .
-
-<http://example.org/item/1> ex:ItemID "1" .
-
-<http://example.org/item/2> ex:ItemID "2" .
-
-<http://example.org/item/3> ex:ItemID "3" .
-
-<http://example.org/owner/8UTTL3R> ex:CompanyID "8UTTL3R" .
-
-<http://example.org/owner/FR33Z3> ex:CompanyID "FR33Z3" .
-
-<http://example.org/owner/HAT3R_1> ex:CompanyID "HAT3R_1" .
-
-<http://example.org/shopper/1> ex:ShopperID "1" .
-
-<http://example.org/shopper/2> ex:ShopperID "2" .
-
-<http://example.org/shopper/3> ex:ShopperID "3" .
-
-ex:contains a owl:ObjectProperty;
-  rdfs:label "contains"@en;
-  rdfs:comment "A Thing contains another Thing"@en;
-  rdfs:domain owl:Thing;
-  rdfs:range owl:Thing .
-
-ex:owns a owl:ObjectProperty;
-  rdfs:label "owns"@en;
-  rdfs:comment "An Agent owns a Thing"@en;
-  rdfs:domain foaf:Agent;
-  rdfs:range owl:Thing .
-
-ex:password a owl:DatatypeProperty;
-  rdfs:label "password"@en;
-  rdfs:comment "A password for an account in an online shop"@en;
-  rdfs:domain ex:Account;
-  rdfs:range xsd:string .
-
-ex:provides a owl:ObjectProperty;
-  rdfs:label "provides"@en;
-  rdfs:comment "A Thing provides access to another Thing"@en;
-  rdfs:domain owl:Thing;
-  rdfs:range owl:Thing .
+ex:Shop3Item a ex:Item;
+  dcterms:description "Made on Earth by humans."@en;
+  foaf:name "SuperVan"@en;
+  schema:availability schema:PreOrder;
+  schema:image <https://example.org/images/van_front.png>,
+    <https://example.org/images/van_back.png>,
+    <https://example.org/images/van_leather_seats.png>;
+  schema:price 1.002499e4 .
