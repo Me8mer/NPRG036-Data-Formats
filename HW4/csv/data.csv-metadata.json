@@ -330,7 +330,7 @@
                         "columnReference": "AccountID",
                         "reference": {
                             "resource": "data-4.csv",
-                            "columnReference": "ItemID"
+                            "columnReference": "AccountID"
                         }
                     }
                 ]
@@ -344,12 +344,13 @@
                         "name": "CartID",
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/contains",
+                        "valueUrl": "http://example.org/vocabulary/Shop{CartID}Cart",
                         "required": true
                     },
                     {
                         "name": "ItemID",
                         "datatype": "integer",
-                        "propertyUrl": "http://example.org/vocabulary/contains",
+                        "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
                         "required": true
                     }
                 ],
