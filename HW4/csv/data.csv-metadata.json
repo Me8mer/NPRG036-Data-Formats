@@ -63,6 +63,7 @@
                         "name": "OwnerID",
                         "datatype": "string",
                         "propertyUrl": "http://example.org/vocabulary/owns",
+                        "valueUrl": "http://example.org/vocabulary/Corp{OwnerID}",
                         "required": true
                     }
                 ],
@@ -132,6 +133,7 @@
                         "name": "E_ShopID",
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/provides",
+                        "valueUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
                         "required": true
                     }
                 ],
@@ -154,12 +156,14 @@
                     {
                         "name": "ShopperID",
                         "datatype": "integer",
+                        "valueUrl": "http://example.org/vocabulary/Customer{ShopperID}",
                         "required": true
                     },
                     {
                         "name": "AccountID",
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/owns",
+                        "valueUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
                         "required": true
                     }
                 ],
@@ -238,6 +242,7 @@
                     {
                         "name": "ItemID",
                         "datatype": "integer",
+                        "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
                         "required": true
                     }
                 ],
@@ -260,12 +265,14 @@
                     {
                         "name": "E_ShopID",
                         "datatype": "integer",
+                        "valueUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
                         "required": true
                     },
                     {
                         "name": "ItemID",
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/provides",
+                        "valueUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
                         "required": true
                     }
                 ],
@@ -314,7 +321,17 @@
                     {
                         "name": "AccountID",
                         "datatype": "integer",
+                        "valueUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
                         "required": true
+                    }
+                ],
+                "foreignKeys": [
+                    {
+                        "columnReference": "AccountID",
+                        "reference": {
+                            "resource": "data-4.csv",
+                            "columnReference": "ItemID"
+                        }
                     }
                 ]
             }
@@ -334,6 +351,22 @@
                         "datatype": "integer",
                         "propertyUrl": "http://example.org/vocabulary/contains",
                         "required": true
+                    }
+                ],
+                "foreignKeys": [
+                    {
+                        "columnReference": "CartID",
+                        "reference": {
+                            "resource": "data-9.csv",
+                            "columnReference": "CartID"
+                        }
+                    },
+                    {
+                        "columnReference": "ItemID",
+                        "reference": {
+                            "resource": "data-6.csv",
+                            "columnReference": "ItemID"
+                        }
                     }
                 ]
             }
