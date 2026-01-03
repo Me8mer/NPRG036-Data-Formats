@@ -7,7 +7,7 @@
             "url": "data-1.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Corp{OwnerID}",
-                "class": "http://example.org/vocabulary/Owner",
+                "propertyUrl": "http://example.org/vocabulary/Owner",
                 "columns": [
                     {
                         "name": "OwnerID",
@@ -35,7 +35,7 @@
             "url": "data-2.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Shop{E_ShopID}",
-                "class": "http://example.org/vocabulary/EShop",
+                "propertyUrl": "http://example.org/vocabulary/EShop",
                 "columns": [
                     {
                         "name": "E_ShopID",
@@ -82,7 +82,7 @@
             "url": "data-3.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Customer{ShopperID}",
-                "class": "http://example.org/vocabulary/Shopper",
+                "propertyUrl": "http://example.org/vocabulary/Shopper",
                 "columns": [
                     {
                         "name": "ShopperID",
@@ -110,7 +110,7 @@
             "url": "data-4.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Customer{AccountID}Account",
-                "class": "http://example.org/vocabulary/Account",
+                "propertyUrl": "http://example.org/vocabulary/Account",
                 "columns": [
                     {
                         "name": "AccountID",
@@ -186,7 +186,7 @@
             "url": "data-6.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Shop{ItemID}Item",
-                "class": "http://example.org/vocabulary/Item",
+                "propertyUrl": "http://example.org/vocabulary/Item",
                 "columns": [
                     {
                         "name": "ItemID",
@@ -292,7 +292,7 @@
             "url": "data-9.csv",
             "tableSchema": {
                 "aboutUrl": "http://example.org/vocabulary/Shop{CartID}Cart",
-                "class": "http://example.org/vocabulary/Cart",
+                "propertyUrl": "http://example.org/vocabulary/Cart",
                 "primaryKey": "CartID",
                 "columns": [
                     {

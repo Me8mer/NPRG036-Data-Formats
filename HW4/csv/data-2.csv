@@ -1,4 +1,4 @@
-E_ShopID,Name,URL,Icon,OwnerID
+E_ShopIDKey,Name,URL,Icon,OwnerIDKey
 1,"Goth Fridges","https://www.gothcorp.com/shop/fridges","https://example.org/images/fridge.png",1
 2,"Wayne's Gains","https://www.waynesgains.com","https://example.org/images/protein.png",2
 3,"Lex Rides","https://www.lexcorp.com/vehicles/shop","https://example.org/images/car.png",3
