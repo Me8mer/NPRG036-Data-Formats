@@ -60,7 +60,7 @@
                         "propertyUrl": "https://schema.org/image"
                     },
                     {
-                        "name": "CompanyID",
+                        "name": "OwnerID",
                         "datatype": "string",
                         "propertyUrl": "http://example.org/vocabulary/owns",
                         "required": true
@@ -69,10 +69,10 @@
                 "primaryKey": "E_ShopID",
                 "foreignKeys": [
                     {
-                        "columnReference": "CompanyID",
+                        "columnReference": "OwnerID",
                         "reference": {
                             "resource": "data-1.csv",
-                            "columnReference": "CompanyID"
+                            "columnReference": "OwnerID"
                         }
                     }
                 ]
